@@ -1,6 +1,6 @@
 # cse210-student-template
 This is the starter code for students in CSE 210.
-Bryan C. Stauch
+Bryan C. Stauch - W01 Prepare: Learning Activity—Version Control
 
 This repository contains the starter code for many different projects. They are arranged as follows:
 
