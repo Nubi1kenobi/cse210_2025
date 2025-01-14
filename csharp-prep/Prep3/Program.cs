@@ -9,7 +9,7 @@ class Program
         Random randomNumber = new Random();
         int magicNumber = 0;
         int lowerLimit = 1;
-        int upperLimit = 12;
+        int upperLimit = 100;
         int magicKey = randomNumber.Next(lowerLimit,upperLimit + 1);
 
         Console.Clear();
@@ -49,6 +49,7 @@ class Program
             }            
         
         }
+        Console.Clear();
         Console.Write("Winner Winner Chicken Dinner!");
 
 
