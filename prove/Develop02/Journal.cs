@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 class Journal
 {
     string journalName;
-    List <string> _journalEntries = new List<string>();
+    public static List<string> _journalEntries = new List<string>();
     public static string JournalMenu()
     {
         string _userInput = "";
@@ -28,30 +28,40 @@ class Journal
         else if (userSelection == "2") {Display(); return _loopExit = "no";}         
         else if (userSelection == "3") {Load(); return _loopExit = "no";}         
         else if (userSelection == "4") {Save(); return _loopExit = "no";}         
-        else if (userSelection == "5") {return _loopExit = "yes";}         
-        return "I QUIT";                  
+        else if (userSelection == "5") {return _loopExit = "I QUIT";}         
+        return _loopExit;                  
     }
     static void Write()
     {
+        Console.Clear();
         Console.WriteLine("Stub: Journal/Write()");
+        Entry _newEntry = new Entry();
+        string _combinedNewEntry = _newEntry.CombinedPromptUserEntry();
+        _journalEntries.Add(_combinedNewEntry);
         PressAnyKey();
     } 
     static void Load()
     {
+        Console.Clear();
         Console.WriteLine("Stub: Journal/Load()");
         PressAnyKey();
     } 
     
     static void Save()
     {
+        Console.Clear();
         Console.WriteLine("Stub: Journal/Save()");
         PressAnyKey();
     } 
 
-
     static void Display()
     {
+        Console.Clear();
         Console.WriteLine("Stub: Journal/Display()");
+        foreach (string _entry in _journalEntries)
+        {
+            Console.WriteLine(_entry);
+        }
         PressAnyKey();
     } 
 
