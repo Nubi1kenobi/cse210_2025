@@ -60,7 +60,7 @@ class Journal
         Console.WriteLine("Stub: Journal/Display()");
         foreach (string _entry in _journalEntries)
         {
-            Console.WriteLine(_entry);
+            Console.WriteLine(Entry.Deserialize(_entry));
         }
         PressAnyKey();
     } 
