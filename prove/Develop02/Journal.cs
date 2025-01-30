@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks.Dataflow;
 using System.Xml.Linq;
@@ -6,22 +7,29 @@ using System.Xml.Serialization;
 
 class Journal
 {
-    string journalName;
+    private string _journalName;
     public static List<string> _journalEntries = new List<string>();
-    public static string JournalMenu()
+    public string JournalMenu()
     {
         string _userInput = "";
+         Console. ForegroundColor = ConsoleColor. DarkRed;
         Console.WriteLine("1. Write ");
+         Console. ForegroundColor = ConsoleColor. White;
         Console.WriteLine("2. Display ");
+         Console. ForegroundColor = ConsoleColor. DarkBlue;
         Console.WriteLine("3. Load ");
+         Console. ForegroundColor = ConsoleColor. DarkRed;
         Console.WriteLine("4. Save ");
+         Console. ForegroundColor = ConsoleColor. White;
         Console.WriteLine("5. Quit ");
+        Console. ForegroundColor = ConsoleColor. DarkBlue;
         Console.Write("What would you like to do? ");
+        Console. ForegroundColor = ConsoleColor. White;
         _userInput = Console.ReadLine();
         return _userInput;
     }
 
-   public static string JournalMenuChoice(string userSelection)
+   public string JournalMenuChoice(string userSelection)
    {
         string _loopExit = "0";
         if (userSelection == "1") { Write(); return _loopExit = "no";}         
@@ -40,17 +48,43 @@ class Journal
         _journalEntries.Add(_combinedNewEntry);
         PressAnyKey();
     } 
-    static void Load()
+    void Load()
     {
         Console.Clear();
         Console.WriteLine("Stub: Journal/Load()");
+  
+        Console.Write("Please type a filename for the journal you would like to load, without the extension.\n> ");
+        _journalName = Console.ReadLine() + ".txt";
+        
+        string[] fileLines = File.ReadAllLines(_journalName);              
+        
+        foreach (string fileLine in fileLines) 
+            {
+                Entry newEntry = new Entry();
+                _journalEntries.Add(fileLine);
+            } 
+
+        Console.Clear();    //above and beyond, makes it cleaner.
+        Console.WriteLine($"{_journalName} has been loaded.");
         PressAnyKey();
     } 
     
-    static void Save()
+    void Save()
     {
         Console.Clear();
         Console.WriteLine("Stub: Journal/Save()");
+        Console.Write("Please declare a filename to use for this journal (without the extension): ");
+        _journalName = Console.ReadLine() + ".txt";
+        using (StreamWriter _outputFile = new StreamWriter(_journalName, true))
+            {                     
+                foreach (string journalEntry in _journalEntries)
+                    {
+                        _outputFile.WriteLine(journalEntry);
+                    }
+            }
+
+        Console.Clear();    
+        Console.WriteLine($"{_journalName} has been saved.");  
         PressAnyKey();
     } 
 
@@ -62,6 +96,7 @@ class Journal
         {
             Console.WriteLine(Entry.Deserialize(_entry));
         }
+        Console.WriteLine("");
         PressAnyKey();
     } 
 
@@ -74,8 +109,12 @@ class Journal
 
     public static void PressAnyKey()
     {
-        Console.WriteLine("<press any key>");
+        Console. ForegroundColor = ConsoleColor. DarkYellow;
+        Console.CursorVisible = false;
+        Console.Write("<press any key>");
         Console.ReadKey();
+        Console.CursorVisible = true;
+        Console. ForegroundColor = ConsoleColor. White;
     }
 
 

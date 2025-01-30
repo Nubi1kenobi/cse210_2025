@@ -6,18 +6,67 @@ class Program
     {
         string menu = "-1";
         Console.WriteLine("Hello Develop02 World!");
-        Journal myJournal = new Journal();
+        Welcome();  //I added a little flare.
+        Journal myJournal = new Journal();  //creates new object that is a journal.
         Console.Clear();
-        
-
-        while (menu != "I QUIT")
+        while (menu != "I QUIT")    //loop that keeps program rolling until it is time to quit
         {
-            Console.Clear();
-            string userInput = Journal.JournalMenu();
-            menu = Journal.JournalMenuChoice(userInput);
+            Console.Clear();    //refreshs the screen
+            string userInput = myJournal.JournalMenu();   
+            menu = myJournal.JournalMenuChoice(userInput);
         }
+        Quit(); //I added a little more flare.
+    }
+    static void Welcome()
+    {    
+        int _mySleepTimer = 65;
+                List<string> _welcomeMessage = new List<string>()
+        {
+            "W","e","l","c","o","m","e"," ","t","o"," ","Y","o","u","r"," ","P","e","r","s","o","n","a","l"," ","J","o","u","r","n","a","l"," ","A","p","p",","," ","I"," ","h","o","p","e"," ","y","o","u"," ","e","n","j","o","y"," ","i","t","!" 
+        };
+        Console.CursorVisible = false;
+        Console.Clear();
+        int i = 0;
+        Console. ForegroundColor = ConsoleColor. Red;
+        foreach (string count in _welcomeMessage) 
+        {
+            if (i == 7) {Console. ForegroundColor = ConsoleColor. White;}
+            if (i == 10) {Console. ForegroundColor = ConsoleColor. Blue;}
+            if (i == 38) {Console.WriteLine(""); Console.WriteLine(""); _mySleepTimer = 0;Console. ForegroundColor = ConsoleColor. White;}
+            Console.Write($"{_welcomeMessage[i]}");
+            i++;
+            Thread.Sleep(_mySleepTimer);
+        }
+        Console.WriteLine("");
+        Console.WriteLine("");
         Journal.PressAnyKey();
         Console.Clear();
-        Console.WriteLine("Goodbye, Au revoir, Auf Wiedersehen, Yasou, L'hitraot, Namaste, Viszlát!, Vertu Saeill!, Atsiprasau, Zài jiàn, Namaste, Ha det bra, Khodaa haafez, Żegnaj, Adeus , Adiós, Chao, Dasvidaniya, Poka, Bài bài, Zàijiàn, Arrivederci, Ciao, Sayonara, Ja nee, Farvel, Kwaheri, Baadaye");
+        Console.CursorVisible = true;
+    }
+
+    static void Quit()
+    {    
+        int _mySleepTimer = 500;
+        Random randomNumber = new Random();
+        List<string> _iQuit = new List<string>()
+        {
+            "Goodbye", "Au revoir","Auf Wiedersehen","Yasou", "L'hitraot", "Namaste", "Viszlát!", "Vertu Saeill!", "Atsiprasau", "Zài jiàn", "Ha det bra","Khodaa haafez", "Żegnaj", "Adeus","Adiós","Chao","Dasvidaniya","Poka", "Bài bài","Zàijiàn", "Arrivederci","Ciao","Sayonara","Ja nee","Farvel","Kwaheri","Baadaye",
+            "Goodbye", "Au revoir","Auf Wiedersehen","Yasou", "L'hitraot", "Namaste", "Viszlát!", "Vertu Saeill!", "Atsiprasau", "Zài jiàn", "Ha det bra","Khodaa haafez", "Żegnaj", "Adeus","Adiós","Chao","Dasvidaniya","Poka", "Bài bài","Zàijiàn", "Arrivederci","Ciao","Sayonara","Ja nee","Farvel","Kwaheri","Baadaye" 
+        };
+        Console.CursorVisible = false;
+        Console.Clear();
+        foreach (string count in _iQuit) 
+        {
+            int _magicKey = randomNumber.Next(_iQuit.Count); 
+            Console.Write($"<{_iQuit[_magicKey]}> ");
+            Thread.Sleep(_mySleepTimer);
+            _mySleepTimer = _mySleepTimer - 25;
+            if (_mySleepTimer <= 0){_mySleepTimer = 25;}
+        }
+        Console.WriteLine("");
+        Console.WriteLine("");
+        Journal.PressAnyKey();
+        Console.Clear();
+        Console.CursorVisible = true;
     }
 }
