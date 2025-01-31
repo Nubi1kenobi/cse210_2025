@@ -1,4 +1,6 @@
 using System;
+using System.Drawing;
+using System.Xml;
 
 class Program
 {
@@ -18,20 +20,21 @@ class Program
         Quit(); //I added a little more flare.
     }
     static void Welcome()
-    {    
+    {   Random randomNumber1 = new Random(); 
         int _mySleepTimer = 65;
-                List<string> _welcomeMessage = new List<string>()
+        List<string> _welcomeMessage = new List<string>()
         {
             "W","e","l","c","o","m","e"," ","t","o"," ","Y","o","u","r"," ","P","e","r","s","o","n","a","l"," ","J","o","u","r","n","a","l"," ","A","p","p",","," ","I"," ","h","o","p","e"," ","y","o","u"," ","e","n","j","o","y"," ","i","t","!" 
         };
         Console.CursorVisible = false;
         Console.Clear();
         int i = 0;
-        Console. ForegroundColor = ConsoleColor. Red;
+        Console. ForegroundColor = ConsoleColor. DarkRed;
+       
         foreach (string count in _welcomeMessage) 
-        {
-            if (i == 7) {Console. ForegroundColor = ConsoleColor. White;}
-            if (i == 10) {Console. ForegroundColor = ConsoleColor. Blue;}
+        {   
+            foreach (var color in Colors)
+            Console.ForegroundColor =  //_fGColors[_magicKey1];
             if (i == 38) {Console.WriteLine(""); Console.WriteLine(""); _mySleepTimer = 0;Console. ForegroundColor = ConsoleColor. White;}
             Console.Write($"{_welcomeMessage[i]}");
             i++;
@@ -47,7 +50,7 @@ class Program
     static void Quit()
     {    
         int _mySleepTimer = 500;
-        Random randomNumber = new Random();
+        Random randomNumber2 = new Random();
         List<string> _iQuit = new List<string>()
         {
             "Goodbye", "Au revoir","Auf Wiedersehen","Yasou", "L'hitraot", "Namaste", "Viszlát!", "Vertu Saeill!", "Atsiprasau", "Zài jiàn", "Ha det bra","Khodaa haafez", "Żegnaj", "Adeus","Adiós","Chao","Dasvidaniya","Poka", "Bài bài","Zàijiàn", "Arrivederci","Ciao","Sayonara","Ja nee","Farvel","Kwaheri","Baadaye",
@@ -57,8 +60,8 @@ class Program
         Console.Clear();
         foreach (string count in _iQuit) 
         {
-            int _magicKey = randomNumber.Next(_iQuit.Count); 
-            Console.Write($"<{_iQuit[_magicKey]}> ");
+            int _magicKey2 = randomNumber2.Next(_iQuit.Count); 
+            Console.Write($"<{_iQuit[_magicKey2]}> ");
             Thread.Sleep(_mySleepTimer);
             _mySleepTimer = _mySleepTimer - 25;
             if (_mySleepTimer <= 0){_mySleepTimer = 25;}
