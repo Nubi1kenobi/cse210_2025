@@ -14,7 +14,8 @@ class Entry
         Console.Write($"{_userPrompt}\n> ");
         _userEntry = Console.ReadLine();
         _combinedEntry = Serialize();
-        //Console.WriteLine(_combinedEntry); //this was to test for the date/time stamped & serialized _combinedEntry
+        Console.WriteLine($"{_combinedEntry} this is to test for the date/time stamped & serialized _combinedEntry");
+        Journal.PressAnyKey();
         return _combinedEntry;
     }
 

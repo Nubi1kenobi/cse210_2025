@@ -50,6 +50,7 @@ class Journal
     } 
     void Load()
     {
+        Journal myJournal = new Journal();  
         Console.Clear();
         Console.WriteLine("Stub: Journal/Load()");
   

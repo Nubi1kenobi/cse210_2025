@@ -20,7 +20,7 @@ class Program
         Quit(); //I added a little more flare.
     }
     static void Welcome()
-    {   Random randomNumber1 = new Random(); 
+    {  
         int _mySleepTimer = 65;
         List<string> _welcomeMessage = new List<string>()
         {
@@ -32,9 +32,9 @@ class Program
         Console. ForegroundColor = ConsoleColor. DarkRed;
        
         foreach (string count in _welcomeMessage) 
-        {   
-            foreach (var color in Colors)
-            Console.ForegroundColor =  //_fGColors[_magicKey1];
+        {  
+            if (i == 7) {Console.ForegroundColor = ConsoleColor. White;}
+            if (i == 10) {Console.ForegroundColor = ConsoleColor. DarkBlue;}
             if (i == 38) {Console.WriteLine(""); Console.WriteLine(""); _mySleepTimer = 0;Console. ForegroundColor = ConsoleColor. White;}
             Console.Write($"{_welcomeMessage[i]}");
             i++;
