@@ -19,9 +19,6 @@ class Program
         }
         Quit(); //I added a little more flare.
     }
-
-
-    
     static void Welcome()
     {  
         int _mySleepTimer = 65;
@@ -47,7 +44,6 @@ class Program
         Console.Clear();
         Console.CursorVisible = true;
     }
-
     static void Quit()
     {    
         int _mySleepTimer = 500;
