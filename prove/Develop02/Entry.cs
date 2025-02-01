@@ -7,31 +7,22 @@ class Entry
     static string _combinedEntry = "";
     public string CombinedPromptUserEntry()
     {
-        Console.WriteLine("Stub: CombinedPromptUserEntry()");
         PromptGenerator _userRandomPrompt = new PromptGenerator();
         _userPrompt = _userRandomPrompt.Prompt();
         Console.Write($"{_userPrompt}\n> ");
         _userEntry = Console.ReadLine();
         _combinedEntry = Serialize();
-        Console.WriteLine($"{_combinedEntry} this is to test for the date/time stamped & serialized _combinedEntry");
-        Journal.PressAnyKey();
         return _combinedEntry;
     }
-
     public string Serialize()
     {
-        Console.WriteLine("Stub: Entry/Serialize()");
         string _dateTime = DateTime.Now.ToString("dd/MM/yyyy @ HH:mm:ss");
-        string serializedText = $"{_dateTime}-|-{_userPrompt}-|-{_userEntry}";
-        Console.WriteLine($"{serializedText}");
-        Journal.PressAnyKey();
-        return serializedText;
+        return $"{_dateTime}-|-{_userPrompt}-|-{_userEntry}";
     }
   
-     public static string Deserialize(string journalEntry)
+     /* public static string Deserialize(string journalEntry)
             {
                 string _dateTime = "";
-                Console.WriteLine("Stub: Entry/Deserialize()");
                 string[] segment = journalEntry.Split("-|-");
                 
                 if (journalEntry.Length < 3)
@@ -44,12 +35,35 @@ class Entry
                         _userPrompt = segment[1];    
                         _userEntry = segment[2];
                     }
-                return $"DateTime: {_dateTime} - Prompt: {_userPrompt}\n{_userEntry}";
-            }
-
-     static void Display()
-    {
-        Console.WriteLine("Stub: Entry/Display()");
-    }
-    
+                return $"Date/Time Stamp: {_dateTime} - Prompt: {_userPrompt}\nYour Entry: {_userEntry}\n";
+ */           
+ public static void Deserialize(string journalEntry)
+            {
+                string _dateTime = "";
+                string[] segment = journalEntry.Split("-|-");
+                
+                if (journalEntry.Length < 3)
+                    {
+                        Console.WriteLine("ERROR - Missing line segments, in Entry.Deserialize.");
+                    }
+                else
+                    {
+                        _dateTime = segment[0];
+                        _userPrompt = segment[1];    
+                        _userEntry = segment[2];
+                    }
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write($"Date/Time Stamp: ");
+                Console.ForegroundColor = Journal.GetRandomColor();
+                Console.Write(_dateTime);
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write(" - Prompt: "); 
+                Console.ForegroundColor = Journal.GetRandomColor();
+                Console.WriteLine(_userPrompt);
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write("Your Entry: ");
+                Console.ForegroundColor = Journal.GetRandomColor();
+                Console.WriteLine($"{_userEntry}\n");
+ 
+ }
 }

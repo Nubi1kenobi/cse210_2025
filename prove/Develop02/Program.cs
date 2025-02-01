@@ -73,5 +73,6 @@ class Program
         Journal.PressAnyKey();
         Console.Clear();
         Console.CursorVisible = true;
+        Console.ForegroundColor = ConsoleColor.White;
     }
 }

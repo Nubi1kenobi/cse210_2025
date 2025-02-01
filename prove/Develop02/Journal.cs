@@ -5,7 +5,6 @@ using System.Threading.Tasks.Dataflow;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Security.Principal;
-
 class Journal
 {
     static private string _journalName;
@@ -28,7 +27,6 @@ class Journal
             Thread.Sleep(_mySleepTimer);
         }
         Console.WriteLine("");
-        
         List<string> _display = new List<string>()
         {
             "2","."," ","D","i","s","p","l","a","y"
@@ -43,7 +41,6 @@ class Journal
             Thread.Sleep(_mySleepTimer);
         }
         Console.WriteLine("");
-
         List<string> _load = new List<string>()
         {
             "3","."," ","L","o","a","d"
@@ -58,7 +55,6 @@ class Journal
             Thread.Sleep(_mySleepTimer);
         }
         Console.WriteLine("");
-        
         List<string> _save = new List<string>()
         {
             "4","."," ","S","a","v","e"
@@ -73,7 +69,6 @@ class Journal
             Thread.Sleep(_mySleepTimer);
         }
         Console.WriteLine("");
-        
         List<string> _quit = new List<string>()
         {
             "5","."," ","Q","u","i","t"
@@ -88,7 +83,6 @@ class Journal
             Thread.Sleep(_mySleepTimer);
         }
         Console.WriteLine("");
-        
         List<string> _prompt = new List<string>()
         {
             "W","h","a","t"," ","w","o","u","l","d"," ","y","o","u"," ","l","i","k","e"," ","t","o"," ","d","o","?","¿","?","¿",">",">","> "
@@ -103,10 +97,9 @@ class Journal
             Thread.Sleep(_mySleepTimer);
         }
         Console.CursorVisible = true;
-        
         /*
         List<string> _menu = new List<string>()                        //need to fix this when I have more time
-    {                                                                  //to figure out the list in a list with
+        {                                                              //to figure out the list in a list with
             "_write", "_save", "_load", "_save", "_quit", "_prompt"    //nested loops
         };
         int _mySleepTimer = 25;
@@ -123,7 +116,6 @@ class Journal
         _userInput = Console.ReadLine();
         return _userInput;
     }
-
    public string JournalMenuChoice(string userSelection)
    {
         string _loopExit = "0";
@@ -136,44 +128,64 @@ class Journal
     }
     static void Write()
     {
+        Console.ForegroundColor = Journal.GetRandomColor(); 
         Console.Clear();
-        Console.WriteLine("Stub: Journal/Write()");
         Entry _newEntry = new Entry();
         string _combinedNewEntry = _newEntry.CombinedPromptUserEntry();
         _journalEntries.Add(_combinedNewEntry);
-        //PressAnyKey();
     } 
     void Load()
     {
+        Console.ForegroundColor = Journal.GetRandomColor(); 
         Console.Clear();
-        Console.WriteLine("Stub: Journal/Load()");
-  
         Console.Write("Please type a filename for the journal you would like to load, without the extension.\n> ");
         _journalName = Console.ReadLine() + ".txt";
-        
         string[] fileLines = File.ReadAllLines(_journalName);     
         _journalEntries.Clear();
- /*       foreach (string lineEntry in _journalEntries) 
-            {
-                _journalEntries.Clear();
-            }          
-  */        
         foreach (string fileLine in fileLines) 
-            {
-                Entry newEntry = new Entry();
-                _journalEntries.Add(fileLine);
-            } 
-
+        {
+            Entry newEntry = new Entry();
+            _journalEntries.Add(fileLine);
+        } 
         Console.Clear();    //above and beyond, makes it cleaner.
-        Console.WriteLine($"{_journalName} has been loaded.");
+        Console.WriteLine("");
+        Console.ForegroundColor = Journal.GetRandomColor(); 
+        Console.Write($"{_journalName}");
+        int _mySleepTimer = 10;
+        List<string> _loaded = new List<string>()
+        {
+            " ","h","a","s"," ","b","e","e","n"," ","l","o","a","d","e","d"
+        };
+        int i = 0;
+        foreach (string count in _loaded) 
+        {  
+            Console.CursorVisible = false;
+            Console.ForegroundColor = Journal.GetRandomColor(); 
+            Console.Write($"{_loaded[i]}");
+            i++;
+            Thread.Sleep(_mySleepTimer);
+        }
+        Console.WriteLine("");
         PressAnyKey();
     } 
-    
     void Save()
     {
         Console.Clear();
-        Console.WriteLine("Stub: Journal/Save()");
-        Console.Write("Please declare a filename to use for this journal (without the extension): ");
+        Console.ForegroundColor = Journal.GetRandomColor(); 
+        int _mySleepTimer = 10;
+        int _i = 0;
+        List<string> _savedfile = new List<string>()
+        {
+            "P","l","e","a","s","e"," ","d","e","c","l","a","r","e"," ","a"," ","f","i","l","e","n","a","m","e"," ","f","o","r"," ","t","h","i","s"," ","j","o","u","r","n","a","l"," ","(","w","i","t","h","o","u","t"," ","t","h","e"," ",".","e","x","t",")",": "
+        };
+        foreach (string counfilet in _savedfile) 
+        {  
+            Console.CursorVisible = false;
+            Console.ForegroundColor = Journal.GetRandomColor(); 
+            Console.Write($"{_savedfile[_i]}");
+            _i++;
+            Thread.Sleep(_mySleepTimer);
+        }
         _journalName = Console.ReadLine() + ".txt";
         using (StreamWriter _outputFile = new StreamWriter(_journalName, true))
             {                     
@@ -182,27 +194,39 @@ class Journal
                         _outputFile.WriteLine(journalEntry);
                     }
             }
-
-        Console.Clear();    
-        Console.WriteLine($"{_journalName} has been saved.");  
+        Console.Clear();
+        Console.ForegroundColor = Journal.GetRandomColor();     
+        Console.Write(_journalName);  
+        List<string> _saved = new List<string>()
+        {
+            " ","h","a","s"," ","b","e","e","n"," ","s","a","v","e","d","."
+        };
+        int i = 0;
+        foreach (string count in _saved) 
+        {  
+            Console.CursorVisible = false;
+            Console.ForegroundColor = Journal.GetRandomColor(); 
+            Console.Write($"{_saved[i]}");
+            i++;
+            Thread.Sleep(_mySleepTimer);
+        }
+        Console.WriteLine("");
+        Console.WriteLine("");
         PressAnyKey();
     } 
-
     static void Display()
     {
         Console.Clear();
-        Console.WriteLine("Stub: Journal/Display()");
         foreach (string _entry in _journalEntries)
         {
-            Console.WriteLine(Entry.Deserialize(_entry));
+            Console.ForegroundColor = Journal.GetRandomColor(); 
+            Entry.Deserialize(_entry);
         }
         Console.WriteLine("");
         PressAnyKey();
     } 
-
     static string Quit()
     {
-        Console.WriteLine("Stub: Journal/Quit()");
         PressAnyKey();
         return "I QUIT";
     } 

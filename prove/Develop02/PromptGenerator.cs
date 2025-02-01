@@ -4,7 +4,6 @@ using Microsoft.VisualBasic;
 
 class PromptGenerator
 {
-    string userPrompt;
     Random randomNumber = new Random();
     List <string> _promptList = new List<string>
     {
@@ -15,21 +14,10 @@ class PromptGenerator
         "Create a new goal for today.",
         "What can you do to make today a good day?"
     };
-        
-    public string Prompt()
+     public string Prompt()
     {
-        Console.WriteLine("Stub: PromptGenerator/Prompt()");
         int magicKey = randomNumber.Next(_promptList.Count); 
         string _userPrompt = (_promptList[magicKey]);
         return _userPrompt;
     }
-    
-    static void AddNewPrompt()
-    {
-        Console.WriteLine("Stub: PromptGenerator/AddNewPrompt()");
-    } 
-    static void Display()
-    {
-        Console.WriteLine("Stub: PromptGenerator/Display()");
-    } 
 }
