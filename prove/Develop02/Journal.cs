@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 class Journal
 {
-    private string _journalName;
+    static private string _journalName;
     public static List<string> _journalEntries = new List<string>();
     public string JournalMenu()
     {
@@ -50,15 +50,19 @@ class Journal
     } 
     void Load()
     {
-        Journal myJournal = new Journal();  
         Console.Clear();
         Console.WriteLine("Stub: Journal/Load()");
   
         Console.Write("Please type a filename for the journal you would like to load, without the extension.\n> ");
         _journalName = Console.ReadLine() + ".txt";
         
-        string[] fileLines = File.ReadAllLines(_journalName);              
-        
+        string[] fileLines = File.ReadAllLines(_journalName);     
+        _journalEntries.Clear();
+ /*       foreach (string lineEntry in _journalEntries) 
+            {
+                _journalEntries.Clear();
+            }          
+  */        
         foreach (string fileLine in fileLines) 
             {
                 Entry newEntry = new Entry();
