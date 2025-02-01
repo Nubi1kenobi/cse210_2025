@@ -2,7 +2,6 @@ using System;
 
 class Entry
 {
-    static string _dateTime = DateTime.Now.ToString("yyyy/MM/dd - HH:mm:ss");
     static string _userPrompt = "";
     static string _userEntry = "";
     static string _combinedEntry = "";
@@ -22,11 +21,16 @@ class Entry
     public string Serialize()
     {
         Console.WriteLine("Stub: Entry/Serialize()");
-        return $"{_dateTime}-|-{_userPrompt}-|-{_userEntry}";
+        string _dateTime = DateTime.Now.ToString("dd/MM/yyyy @ HH:mm:ss");
+        string serializedText = $"{_dateTime}-|-{_userPrompt}-|-{_userEntry}";
+        Console.WriteLine($"{serializedText}");
+        Journal.PressAnyKey();
+        return serializedText;
     }
   
      public static string Deserialize(string journalEntry)
             {
+                string _dateTime = "";
                 Console.WriteLine("Stub: Entry/Deserialize()");
                 string[] segment = journalEntry.Split("-|-");
                 

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks.Dataflow;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using System.Security.Principal;
 
 class Journal
 {
@@ -12,19 +13,113 @@ class Journal
     public string JournalMenu()
     {
         string _userInput = "";
-         Console. ForegroundColor = ConsoleColor. DarkRed;
-        Console.WriteLine("1. Write ");
-         Console. ForegroundColor = ConsoleColor. White;
-        Console.WriteLine("2. Display ");
-         Console. ForegroundColor = ConsoleColor. DarkBlue;
-        Console.WriteLine("3. Load ");
-         Console. ForegroundColor = ConsoleColor. DarkRed;
-        Console.WriteLine("4. Save ");
-         Console. ForegroundColor = ConsoleColor. White;
-        Console.WriteLine("5. Quit ");
-        Console. ForegroundColor = ConsoleColor. DarkBlue;
-        Console.Write("What would you like to do? ");
-        Console. ForegroundColor = ConsoleColor. White;
+        int _mySleepTimer = 10;
+        List<string> _write = new List<string>()
+        {
+            "1","."," ","W","r","i","t","e"
+        };
+        int i = 0;
+        foreach (string count in _write) 
+        {  
+            Console.CursorVisible = false;
+            Console.ForegroundColor = Journal.GetRandomColor(); 
+            Console.Write($"{_write[i]}");
+            i++;
+            Thread.Sleep(_mySleepTimer);
+        }
+        Console.WriteLine("");
+        
+        List<string> _display = new List<string>()
+        {
+            "2","."," ","D","i","s","p","l","a","y"
+        };
+        i = 0;
+        foreach (string count in _display) 
+        {  
+            Console.CursorVisible = false;
+            Console.ForegroundColor = Journal.GetRandomColor(); 
+            Console.Write($"{_display[i]}");
+            i++;
+            Thread.Sleep(_mySleepTimer);
+        }
+        Console.WriteLine("");
+
+        List<string> _load = new List<string>()
+        {
+            "3","."," ","L","o","a","d"
+        };
+        i = 0;
+        foreach (string count in _load) 
+        {  
+            Console.CursorVisible = false;
+            Console.ForegroundColor = Journal.GetRandomColor(); 
+            Console.Write($"{_load[i]}");
+            i++;
+            Thread.Sleep(_mySleepTimer);
+        }
+        Console.WriteLine("");
+        
+        List<string> _save = new List<string>()
+        {
+            "4","."," ","S","a","v","e"
+        };
+        i = 0;
+        foreach (string count in _save) 
+        {  
+            Console.CursorVisible = false;
+            Console.ForegroundColor = Journal.GetRandomColor(); 
+            Console.Write($"{_save[i]}");
+            i++;
+            Thread.Sleep(_mySleepTimer);
+        }
+        Console.WriteLine("");
+        
+        List<string> _quit = new List<string>()
+        {
+            "5","."," ","Q","u","i","t"
+        };
+        i = 0;
+        foreach (string count in _quit) 
+        {  
+            Console.CursorVisible = false;
+            Console.ForegroundColor = Journal.GetRandomColor(); 
+            Console.Write($"{_quit[i]}");
+            i++;
+            Thread.Sleep(_mySleepTimer);
+        }
+        Console.WriteLine("");
+        
+        List<string> _prompt = new List<string>()
+        {
+            "W","h","a","t"," ","w","o","u","l","d"," ","y","o","u"," ","l","i","k","e"," ","t","o"," ","d","o","?","¿","?","¿",">",">","> "
+        };
+        i = 0;
+        foreach (string count in _prompt) 
+        {  
+            Console.CursorVisible = false;
+            Console.ForegroundColor = Journal.GetRandomColor(); 
+            Console.Write($"{_prompt[i]}");
+            i++;
+            Thread.Sleep(_mySleepTimer);
+        }
+        Console.CursorVisible = true;
+        
+        /*
+        List<string> _menu = new List<string>()                        //need to fix this when I have more time
+    {                                                                  //to figure out the list in a list with
+            "_write", "_save", "_load", "_save", "_quit", "_prompt"    //nested loops
+        };
+        int _mySleepTimer = 25;
+        for (int _i = 0; _i <= _menu.Count(); _i++)
+        {
+            for (int _ii = 0; _ii <= _menu[_i].Count(); _ii++)
+            {
+                Console.ForegroundColor = Journal.GetRandomColor(); 
+                Console.Write($"{_menu[_i][_ii]}");
+                Thread.Sleep(_mySleepTimer);
+            }
+        }
+        */
         _userInput = Console.ReadLine();
         return _userInput;
     }
@@ -46,7 +141,7 @@ class Journal
         Entry _newEntry = new Entry();
         string _combinedNewEntry = _newEntry.CombinedPromptUserEntry();
         _journalEntries.Add(_combinedNewEntry);
-        PressAnyKey();
+        //PressAnyKey();
     } 
     void Load()
     {
@@ -111,15 +206,33 @@ class Journal
         PressAnyKey();
         return "I QUIT";
     } 
-
+    public static ConsoleColor GetRandomColor()
+    {
+        Random randomColor = new Random();
+        var consoleColors = Enum.GetValues(typeof(ConsoleColor));
+        return (ConsoleColor)consoleColors.GetValue(randomColor.Next(consoleColors.Length));
+    }
     public static void PressAnyKey()
     {
-        Console. ForegroundColor = ConsoleColor. DarkYellow;
+        List<string> _pressanykey = new List<string>()
+        {
+            "<","p","r","e","s","s"," ","a","n","y"," ","k","e","y",">"
+        };
+        Console. ForegroundColor = GetRandomColor();
         Console.CursorVisible = false;
-        Console.Write("<press any key>");
+        int _i = 0;
+        foreach (string count in _pressanykey) 
+        {  
+            int _mySleepTimer = 10;
+            Console.CursorVisible = false;
+            Console.ForegroundColor = Journal.GetRandomColor(); 
+            Console.Write($"{_pressanykey[_i]}");
+            _i++;
+            Thread.Sleep(_mySleepTimer);
+        }
         Console.ReadKey();
         Console.CursorVisible = true;
-        Console. ForegroundColor = ConsoleColor. White;
+        Console. ForegroundColor = Journal.GetRandomColor();;
     }
 
 

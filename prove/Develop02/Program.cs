@@ -19,6 +19,9 @@ class Program
         }
         Quit(); //I added a little more flare.
     }
+
+
+    
     static void Welcome()
     {  
         int _mySleepTimer = 65;
@@ -29,13 +32,11 @@ class Program
         Console.CursorVisible = false;
         Console.Clear();
         int i = 0;
-        Console. ForegroundColor = ConsoleColor. DarkRed;
-       
+        Console.ForegroundColor = Journal.GetRandomColor(); 
         foreach (string count in _welcomeMessage) 
         {  
-            if (i == 7) {Console.ForegroundColor = ConsoleColor. White;}
-            if (i == 10) {Console.ForegroundColor = ConsoleColor. DarkBlue;}
-            if (i == 38) {Console.WriteLine(""); Console.WriteLine(""); _mySleepTimer = 0;Console. ForegroundColor = ConsoleColor. White;}
+            Console.ForegroundColor = Journal.GetRandomColor(); 
+            if (i == 38) {Console.WriteLine(""); Console.WriteLine(""); _mySleepTimer = 0;Console. ForegroundColor = ConsoleColor.White;}
             Console.Write($"{_welcomeMessage[i]}");
             i++;
             Thread.Sleep(_mySleepTimer);
@@ -60,6 +61,7 @@ class Program
         Console.Clear();
         foreach (string count in _iQuit) 
         {
+            Console.ForegroundColor = Journal.GetRandomColor(); 
             int _magicKey2 = randomNumber2.Next(_iQuit.Count); 
             Console.Write($"<{_iQuit[_magicKey2]}> ");
             Thread.Sleep(_mySleepTimer);
