@@ -29,10 +29,10 @@ class Program
         Console.CursorVisible = false;
         Console.Clear();
         int i = 0;
-        Console.ForegroundColor = Journal.GetRandomColor(); 
+        Console.ForegroundColor = Utility.GetRandomColor(); 
         foreach (string count in _welcomeMessage) 
         {  
-            Console.ForegroundColor = Journal.GetRandomColor(); 
+            Console.ForegroundColor = Utility.GetRandomColor(); 
             if (i == 38) {Console.WriteLine(""); Console.WriteLine(""); _mySleepTimer = 0;Console. ForegroundColor = ConsoleColor.White;}
             Console.Write($"{_welcomeMessage[i]}");
             i++;
@@ -40,7 +40,7 @@ class Program
         }
         Console.WriteLine("");
         Console.WriteLine("");
-        Journal.PressAnyKey();
+        Utility.PressAnyKey();
         Console.Clear();
         Console.CursorVisible = true;
     }
@@ -57,7 +57,7 @@ class Program
         Console.Clear();
         foreach (string count in _iQuit) 
         {
-            Console.ForegroundColor = Journal.GetRandomColor(); 
+            Console.ForegroundColor = Utility.GetRandomColor(); 
             int _magicKey2 = randomNumber2.Next(_iQuit.Count); 
             Console.Write($"<{_iQuit[_magicKey2]}> ");
             Thread.Sleep(_mySleepTimer);
@@ -66,9 +66,40 @@ class Program
         }
         Console.WriteLine("");
         Console.WriteLine("");
-        Journal.PressAnyKey();
+        Utility.PressAnyKey();
         Console.Clear();
         Console.CursorVisible = true;
         Console.ForegroundColor = ConsoleColor.White;
+    }
+}
+class Utility
+{
+    public static ConsoleColor GetRandomColor()
+    {
+        Random randomColor = new Random();
+        var consoleColors = Enum.GetValues(typeof(ConsoleColor));
+        return (ConsoleColor)consoleColors.GetValue(randomColor.Next(consoleColors.Length));
+    }
+    public static void PressAnyKey()
+    {
+        List<string> _pressanykey = new List<string>()
+        {
+            "<","p","r","e","s","s"," ","a","n","y"," ","k","e","y",">"
+        };
+        Console. ForegroundColor = GetRandomColor();
+        Console.CursorVisible = false;
+        int _i = 0;
+        foreach (string count in _pressanykey) 
+        {  
+            int _mySleepTimer = 10;
+            Console.CursorVisible = false;
+            Console.ForegroundColor = GetRandomColor(); 
+            Console.Write($"{_pressanykey[_i]}");
+            _i++;
+            Thread.Sleep(_mySleepTimer);
+        }
+        Console.ReadKey();
+        Console.CursorVisible = true;
+        Console. ForegroundColor = GetRandomColor();;
     }
 }
