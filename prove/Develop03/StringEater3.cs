@@ -1,15 +1,14 @@
 using System;
-public class StringEater
+public class StringEater3
 {
     private string _eatenString;
     private int _digestiveDelay;
     
-    
-    public StringEater(string eatenString)
+    public StringEater3(string eatenString)
     {
         _eatenString = eatenString;
         _digestiveDelay = 0;
-        DisplayRandomColoredChar();
+        SpitItOut();
     }  
     private static ConsoleColor GetRandomColor()
     {
@@ -31,6 +30,17 @@ public class StringEater
         foreach (Char c in digestedString)
         {
             Console.ForegroundColor = GetRandomColor();    
+            Thread.Sleep(_digestiveDelay);
+            Console.Write(c);
+        }
+    }
+     public void SpitItOut()
+    {
+        List<char> digestedString = _eatenString.ToList();
+        Console.ForegroundColor = ConsoleColor.White;
+        foreach (Char c in digestedString)
+        {
+            //Console.ForegroundColor = GetRandomColor();    
             Thread.Sleep(_digestiveDelay);
             Console.Write(c);
         }

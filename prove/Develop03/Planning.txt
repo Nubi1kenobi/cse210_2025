@@ -1,0 +1,23 @@
+                                            ┌─────────────────────────────────────────────┐
+                                            │Scripture                                    │
+┌────────────────────────────────────────┐  ├─────────────────────────────────────────────┤
+│ScriptureReference                      │  │- Reference: string                          │
+├────────────────────────────────────────┤  │- Text: string                               │
+│- Book: string                          │  │- Words: string[]                            │
+│- Chapter: int                          │  │- WordCount: int                             │
+│- VerseStart: int                       │  │- HiddenWordIndices: HashSet<int>            │
+│- VerseEnd: int                         │  │+ Scripture (reference: string, text: string)│
+│+ ScriptureReference (reference: string)│  │+ HideWord (index: int): void                │
+│+ GetFormattedReference (): string      │  │+ ShowWord (index: int): void                │
+└────────────────────────────────────────┘  │+ IsWordHidden (index: int): bool            │
+                                            │+ GetRenderedText (): string                 │
+                                            └─────────────────────────────────────────────┘
+                                                                                           
+                                                                                           
+      ┌────────────────────────────┐                                                       
+      │Word                        │                                                       
+      ├────────────────────────────┤                                                       
+      │- scripture: Scripture      │                                                       
+      │+ Word(scripture: Scripture)│                                                       
+      │+ Play(): void              │                                                       
+      └────────────────────────────┘                                                  

@@ -1,14 +1,13 @@
 using System;
-public class StringEater
+public class StringEater2
 {
     private string _eatenString;
     private int _digestiveDelay;
     
-    
-    public StringEater(string eatenString)
+    public StringEater2(string eatenString)
     {
         _eatenString = eatenString;
-        _digestiveDelay = 0;
+        _digestiveDelay = 25;
         DisplayRandomColoredChar();
     }  
     private static ConsoleColor GetRandomColor()
