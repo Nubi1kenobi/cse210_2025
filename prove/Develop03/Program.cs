@@ -11,18 +11,18 @@ class Program
     {
         Intro();
         Utility.PressAnyKey();
-        PlayingAround();
+        //PlayingAround();
  
     }
     static void Intro()
     {
         Console.ForegroundColor = ConsoleColor.White;
         Console.Clear();
-        string welcomeMessage = "Hello Develop03 World!";
-        Console.WriteLine(welcomeMessage, true);
+        Console.WriteLine("Hello Develop03 World!");
+        string welcomeMessage = "<Let's Memorize a Scripture Together!> ";
         for (int i = 0; i < 100; i++)
         {
-           for (int ii = 0; ii < 7; ii++)
+           for (int ii = 0; ii < 4; ii++)
            {
               StringEater randomColoredChar = new StringEater(welcomeMessage, true);
               Console.Write(" ");
