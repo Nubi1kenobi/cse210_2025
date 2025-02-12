@@ -11,7 +11,10 @@ class Program
     {
         Intro();
         Utility.PressAnyKey();
-        //PlayingAround();
+        PlayingAround();
+        Utility.PressAnyKey();
+        ProgramPlanner();
+        Utility.PressAnyKey();
  
     }
     static void Intro()
@@ -30,7 +33,27 @@ class Program
             Console.WriteLine("");
         }
     }
-    static void PlayingAround() 
+    static void ProgramPlanner()
+    {
+        string fileName = "Planning.txt";
+        List<string> readingAllLines = File.ReadAllLines(fileName).ToList(); 
+        foreach (string line in readingAllLines)
+        {
+            StringEater somethingNew = new StringEater(line);
+            Console.WriteLine("");
+        }
+    }
+    class Utility
+    {
+        public static void PressAnyKey()
+        {
+            string pressanykey = "<press any key>";
+            StringEater randomColoredChar = new StringEater(pressanykey, 35, true, 0, false, 0, true);
+            Console.ReadKey();
+            Console.Clear();
+        }
+    }
+        static void PlayingAround() 
     {
         StringEater randomColoredChar = new StringEater("Muahahahahah!!!!");
         Console.WriteLine("");
@@ -44,24 +67,6 @@ class Program
         Console.WriteLine("");
         StringEater randomColoredChar5 = new StringEater("Muahahahahah!!!!",250,false,0,false,0,true);
         Console.WriteLine("");
-        string fileName = "Planning.txt";
-        List<string> readingAllLines = File.ReadAllLines(fileName).ToList(); 
-        foreach (string line in readingAllLines)
-        {
-            StringEater3 somethingNew = new StringEater3(line);
-            Console.WriteLine("");
-        }
-
-    }
-    class Utility
-    {
-        public static void PressAnyKey()
-        {
-            string pressanykey = "<press any key>";
-            StringEater randomColoredChar = new StringEater(pressanykey, 35, true, 0, false, 0, true);
-            Console.ReadKey();
-            Console.Clear();
-        }
     }
 }
 
