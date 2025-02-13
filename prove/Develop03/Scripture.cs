@@ -14,7 +14,7 @@ public class Scripture
         string _book = book;
         string _beginningVerse = beginningVerse;
         string _scripture = scripture;
-        //int ii = 0;
+        int ii = 0;
   
         
         Reference newReference = new Reference(_book, _chapter, _beginningVerse);
@@ -22,12 +22,12 @@ public class Scripture
         Console.WriteLine(_scriptureWords.Length);
         
         
-    //    foreach (string a in _scriptureWords)
-      //  {            
-            //Console.Write($"{a[ii]}");
+        foreach (string a in _scriptureWords)
+        {            
+            Console.Write($"{a[ii]}");
     
-        //}
-       // ii = 0;
+        }
+        ii = 0;
 
     }
     public Scripture(string book, string chapter, string beginningVerse, string endingVerse, string scripture)
