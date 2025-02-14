@@ -5,7 +5,7 @@ public class Scripture
 {
     private string _scripture;
     private string[] _scriptureWords;
-    private bool _flag = false;
+    List<bool> _hiddenFlagList = new List<bool>();
 
     
     public Scripture(string book, string chapter, string beginningVerse, string scripture)
@@ -14,21 +14,7 @@ public class Scripture
         string _book = book;
         string _beginningVerse = beginningVerse;
         string _scripture = scripture;
-        int ii = 0;
-  
-        
         Reference newReference = new Reference(_book, _chapter, _beginningVerse);
-        _scriptureWords = _scripture.Split(' ');
-        Console.WriteLine(_scriptureWords.Length);
-        
-        
-        foreach (string a in _scriptureWords)
-        {            
-            Console.Write($"{a[ii]}");
-    
-        }
-        ii = 0;
-
     }
     public Scripture(string book, string chapter, string beginningVerse, string endingVerse, string scripture)
     {
@@ -36,18 +22,32 @@ public class Scripture
         string _chapter = chapter;
         string _beginningVerse = beginningVerse;
         string _endingVerse = endingVerse;
-        //nt ii = 0;
-
         Reference newReference = new Reference(_book, _chapter, _beginningVerse, _endingVerse);
-        _scriptureWords = _scripture.Split(' ');
-        Console.WriteLine(_scriptureWords.Length);
-        
-        
-    //    foreach (string a in _scriptureWords)
-      //  {            
-            //Console.Write($"{a[ii]}");
-    
-        //}
-       // ii = 0;
-        }
     }
+    public int GetScriptureWords()
+    {
+        return _scriptureWords.Count();
+    }
+
+    public string GetSripture(string scripture)
+    {
+        _scripture = scripture;
+         int ii = 0;       
+        _scriptureWords = _scripture.Split(' ');
+        Console.WriteLine(_scriptureWords.Length);        
+        foreach (string singleWord in _scriptureWords)
+        {            
+            Console.Write(singleWord);
+            //Word newWord = new Word(false);
+            ii++;
+            if (ii == singleWord.Length) {Console.Write("");}
+            else {Console.Write(" ");}
+        }
+        ii = 0;
+
+        return _scripture;
+    }
+
+        
+ 
+}

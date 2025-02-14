@@ -8,7 +8,6 @@ using System.Security.Cryptography.X509Certificates;
 
 class Program
 {
-    //(string eatenString, int digestiveDelay, bool horizontalMovement, bool verticalMovement,int horizontalMoveUnits, int verticalMoveUnits, bool randoColorChar)
     static void Main(string[] args)
     {
         string bookRef = "Articles of Faith";
@@ -16,12 +15,12 @@ class Program
         string beginningVerseRef = "13";
         string endingVerseRef = "";
         string scriptureText = "We believe in being honest, true, chaste, benevolent, virtuous, and in doing good to all men; indeed, we may say that we follow the admonition of Paul—We believe all things, we hope all things, we have endured many things, and hope to be able to endure all things. If there is anything virtuous, lovely, or of good report or praiseworthy, we seek after these things.";
+        
         //Intro();
         //Utility.PressAnyKey();
         //PlayingAround();
         //Utility.PressAnyKey();
         //ProgramPlanner();
-        //int ii = 0; 
         //Utility.PressAnyKey();
         ScriptureMem(bookRef, chapterRef, beginningVerseRef, endingVerseRef, scriptureText);
         
@@ -30,18 +29,43 @@ class Program
 
     static void ScriptureMem(string book, string chapter, string begin, string ending, string scripture)
     {
-        //string programLoop = "";
+        bool programLoop = true;
+        string loopTest = "";
         string _book = book;
         string _chapter = chapter;
         string _beginningVerse = begin;
         string _endingVerse = ending;
         string _scripture = scripture;
-       // while (programLoop != "quit" || programLoop != "Quit" || programLoop != "QUIT")
-       
-            if (ending == "") {Scripture memorizeThis = new Scripture(_book, _chapter, _beginningVerse, _scripture);}
-       else if (ending != "") {Scripture memorizeThis = new Scripture(_book, _chapter, _beginningVerse, _endingVerse, _scripture);}
-       
-    }
+        int _wordCount1;
+        
+        do
+        {
+            Console.CursorVisible = false;
+            Console.Clear();
+            if (ending == "") 
+            {
+                Scripture memorizeThis = new Scripture(_book, _chapter, _beginningVerse, _scripture);
+                _wordCount1 = memorizeThis.GetScriptureWords();
+            }
+            else if (ending != "") 
+            {
+                Scripture memorizeThis = new Scripture(_book, _chapter, _beginningVerse, _endingVerse, _scripture);
+                _wordCount1 = memorizeThis.GetScriptureWords();
+            }
+            else
+            //_scripture = memorizeThis.GetSripture(_scripture);
+            int _initialRando = Randomizer(3);
+            StringEater randomColoredChar = new StringEater(_scripture,0,true,0,false,0,true);
+            Console.WriteLine($"\n\n");
+
+
+            loopTest = Console.ReadLine();
+            if (loopTest == "quit" || loopTest == "Quit" || loopTest == "QUIT" ) { programLoop = false;} 
+            
+        }
+        while (programLoop);
+        Console.CursorVisible = true;
+    }       
     static void Intro()
     {
         Console.ForegroundColor = ConsoleColor.White;
@@ -93,5 +117,15 @@ class Program
         StringEater randomColoredChar5 = new StringEater("Muahahahahah!!!!",250,false,0,false,0,true);
         Console.WriteLine("");
     }
+    static private int Randomizer(int wordCount)
+    {
+        int _randomNumber;
+        int _wordCount = wordCount;
+        Random _randoCommando = new Random();
+        _randomNumber = _randoCommando.Next(1,_wordCount);
+        return _randomNumber;
+    }
+    
 }
+
 
