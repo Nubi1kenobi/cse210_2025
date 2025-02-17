@@ -1,10 +1,11 @@
 using System;
+using System.Dynamic;
 public class Word
 {
     private bool _isHidden = false;
-    public Word(bool isHidden)
+    public void SetHide()
     {
-        _isHidden = isHidden;
+        _isHidden = true;
     }
     public bool GetStatus()
     {

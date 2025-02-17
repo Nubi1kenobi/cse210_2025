@@ -34,12 +34,6 @@ public class StringEater
         _randoColorChar = randoColorChar;
         StandardDisplay();
     }  
-    private static ConsoleColor GetRandomColor()
-    {
-        Random randomColor = new Random();
-        var consoleColors = Enum.GetValues(typeof(ConsoleColor));
-        return (ConsoleColor)consoleColors.GetValue(randomColor.Next(consoleColors.Length));
-    }
     private void DisplayVertical()
     {
         List<char> digestedString = _eatenString.ToList();
@@ -51,45 +45,55 @@ public class StringEater
     private void StandardDisplay()
     {
         if (_hMove == true && _vMove != true) {
-            Console.CursorVisible = false;
             Console.ForegroundColor = ConsoleColor.White;
             foreach (Char c in _eatenString)
             {
-                if (_randoColorChar == true) {Console.ForegroundColor = GetRandomColor();}
+                if (_randoColorChar == true) 
+                {
+                    Console.ForegroundColor = Randomizer.RandomConsoleColor();
+                    //Console.BackgroundColor = Randomizer.RandomConsoleColor();
+                }
                 Thread.Sleep(_digestiveDelay);
                 for (int i = 0; i < _hMoveUnits; i++) {Console.Write(" "); }
                 Console.Write(c);
+                Console.BackgroundColor = ConsoleColor.Black;
             }
-            Console.CursorVisible = true;
         }
         if (_hMove == true && _vMove == true) {
-            Console.CursorVisible = false;
             Console.ForegroundColor = ConsoleColor.White;
             foreach (Char c in _eatenString)
             {
-                if (_randoColorChar == true) {Console.ForegroundColor = GetRandomColor();}
+                if (_randoColorChar == true) 
+                {
+                    Console.ForegroundColor = Randomizer.RandomConsoleColor();
+                    //Console.BackgroundColor = Randomizer.RandomConsoleColor();
+                }
                 Thread.Sleep(_digestiveDelay);
                 for (int i = 0; i < _hMoveUnits; i++) {Console.Write(" "); }
                 Console.WriteLine(c);
                 Console.ForegroundColor = ConsoleColor.White;
                 for (int i = 0; i < _vMoveUnits; i++) {Console.WriteLine(""); }
+                Console.BackgroundColor = ConsoleColor.Black;
             }
-            Console.CursorVisible = true;
+            Console.BackgroundColor = ConsoleColor.Black;
         }
         if (_hMove != true && _vMove != true) {
             Console.ForegroundColor = ConsoleColor.White;
             foreach (Char c in _eatenString)
             {
                 {
-                Console.CursorVisible = false;
-                if (_randoColorChar == true) {Console.ForegroundColor = GetRandomColor();}
+                if (_randoColorChar == true) 
+                {
+                    Console.ForegroundColor = Randomizer.RandomConsoleColor();
+                    //Console.BackgroundColor = Randomizer.RandomConsoleColor(); 
+                }
                 Thread.Sleep(_digestiveDelay);
                 Console.Clear();
                 Console.Write(c);
                 }
             }
+            Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
-            Console.CursorVisible = true;
-        }
+         }
     }
 }

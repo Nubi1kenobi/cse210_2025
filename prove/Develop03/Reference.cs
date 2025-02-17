@@ -4,7 +4,7 @@ public class Reference
     private string _book;
     private string _chapter;
     private string _beginningVerse;
-    private string _endingVerse;    
+    private string _endingVerse = "";    
 
     public Reference(string book, string chapter, string beginningVerse)
     {
@@ -24,11 +24,11 @@ public class Reference
         string scriptureReference = "";
         if (_endingVerse == "") 
         {
-            scriptureReference = $"{_book} {_chapter}:{_beginningVerse}";
+            scriptureReference = $"{_book} {_chapter}:{_beginningVerse} ";
         }
         else if (_endingVerse != "") 
         {
-            scriptureReference = $"{_book} {_chapter}:{_beginningVerse}-{_endingVerse}";
+            scriptureReference = $"{_book} {_chapter}:{_beginningVerse}-{_endingVerse} ";
         }
         return scriptureReference;
 
