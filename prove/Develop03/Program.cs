@@ -14,12 +14,18 @@ class Program
         int i = 0;
         int wordCounter = 0;
         bool loopInputValidation = false;
-
         Console.CursorVisible = false;
+        Playground dsjkfgd = new Playground();
+        dsjkfgd.Intro();
+        dsjkfgd.PlayingAround();
+        dsjkfgd.ProgramPlanner();
+        dsjkfgd.Quit();
         Console.Clear();
+
+        Scripture memorizeThis = new Scripture(book, chapter, beginningVerse, scripture);
+        //scripture = memorizeThis.GetScripture(scripture);
         if (endingVerse == "") 
         {
-            Scripture memorizeThis = new Scripture(book, chapter, beginningVerse, scripture);
             scripture = memorizeThis.GetScripture(scripture);
             wordCounter = memorizeThis.GetScriptureWordCount();
             StringEater memorizeThisInColors = new StringEater($"{memorizeThis.GetReference()} {scripture} ",true);
@@ -28,23 +34,20 @@ class Program
         }
         else if (endingVerse != "") 
         {
-            Scripture memorizeThis = new Scripture(book, chapter, beginningVerse, endingVerse, scripture);
-            wordCounter = memorizeThis.GetScriptureWordCount();
             scripture = memorizeThis.GetScripture(scripture);
             StringEater memorizeThisInColors = new StringEater($"{memorizeThis.GetReference()} {scripture} ",true);
             Console.ReadLine();
+            Console.Clear();
         }
-        Scripture memorizeThisAgain = new Scripture(book, chapter, beginningVerse, endingVerse, scripture);
         do
         {
             Console.Clear();
             Console.CursorVisible = false;
-            scripture = memorizeThisAgain.GetUpdatedScripture(scripture);
-            StringEater memorizeThisInColors = new StringEater($"{memorizeThisAgain.GetReference()} {scripture} ",true);
-            Console.WriteLine("\n\n\n\n\n");
-
-            StringEater memorizeThisInColors1 = new StringEater($"Initial Words: {memorizeThisAgain.GetScriptureWordCount()} Hidden Words: {memorizeThisAgain.GetHiddenWordsCount()} {scripture} ",true);
-            StringEater memorizeThisInColors2 = new StringEater($"Remaining Words: {memorizeThisAgain.GetScriptureWordCount()-memorizeThisAgain.GetHiddenWordsCount()} {scripture} ",true);
+            scripture = memorizeThis.GetUpdatedScripture(scripture);
+            StringEater memorizeThisInColors = new StringEater($"{memorizeThis.GetReference()} {scripture}\n\n",true);
+            StringEater memorizeThisInColors1 = new StringEater($"Initial Words: {memorizeThis.GetScriptureWordCount()} Current Hidden Count: {memorizeThis.GetHiddenWordsCount()}\n",true);
+            StringEater memorizeThisInColors2 = new StringEater($"Remaining Words to Hide: {memorizeThis.GetScriptureWordCount()-memorizeThis.GetHiddenWordsCount()}\n",true);
+            memorizeThis.GetHiddenWordList();
             i++;
             loopExit = Console.ReadLine();
             if (loopExit == "quit" || loopExit == "Quit" || loopExit == "QUIT") {loopInputValidation = true;}

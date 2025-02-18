@@ -13,12 +13,9 @@ public class Scripture
     private string _completeReference;
     List<bool> _hiddenFlagList = new List<bool>();
     List<string> _scriptureList = new List<string>();
-    List<Word> _flagList = new List<Word>();
-    
-
-    
-
-    
+    List<string> _scriptureListBase = new List<string>();
+    List<string> _hiddenWordList = new List<string>();
+    List<Word> _flagList = new List<Word>();  
     public Scripture(string book, string chapter, string beginningVerse, string scripture)
     {
         string _chapter = chapter;
@@ -27,8 +24,6 @@ public class Scripture
         string _scripture = scripture;
         Reference newReference = new Reference(_book, _chapter, _beginningVerse);
         _completeReference = newReference.GetReference();
-        //Utility.Debug($"Scripture ConstructorA: {_completeReference}");
-        //Utility.Debug($"Scripture ConstructorA: {_scripture}");
     }
     public Scripture(string book, string chapter, string beginningVerse, string endingVerse, string scripture)
     {
@@ -36,19 +31,17 @@ public class Scripture
         string _chapter = chapter;
         string _beginningVerse = beginningVerse;
         string _endingVerse = endingVerse;
+        string _scripture = scripture;
         Reference newReference = new Reference(_book, _chapter, _beginningVerse, _endingVerse);
         _completeReference = newReference.GetReference();
-        //Utility.Debug($"Scripture ConstructorB: {_scripture}");
     }
     public string GetReference() 
     {
-        //Utility.Debug($"Scripture.GetReference(): {_completeReference}");
         return _completeReference;}
 
     public int GetScriptureWordCount()
     {
         int _wordCounter = _scriptureList.Count();
-        //Utility.Debug($"GetScriptureWordCount: {_wordCounter}");
         return _wordCounter;
     }
     public int GetHiddenWordsCount()
@@ -65,65 +58,59 @@ public class Scripture
     {
         _scripture = scripture;
         _scriptureList = scripture.Split(" ").ToList();
+        _scriptureListBase = scripture.Split(" ").ToList();
         foreach (string _a in _scriptureList) 
         {
             Word newWord = new Word();
             _flagList.Add(newWord);
         }
-        //Utility.Debug($"GetScripture(string scripture) _flaggedWordListCount: {_flaggedWordListCount}");
-        //Utility.Debug($"GetScripture(string scripture) _flagList should be fully populated: {_flagList.Count()}");
         return _scripture;
     }
     public string GetUpdatedScripture(string scripture)
     {
         _scripture = scripture;
         _scriptureList = scripture.Split(" ").ToList();
-                foreach (string _a in _scriptureList) 
-        {
-            Word newWord = new Word();
-            _flagList.Add(newWord);
-        }
+        
+        HideWords();  
         int _i = 0;
-        //Utility.Debug($"GetUpdatedScripture(string scripture) - _scriptureList.Count(): {_scriptureList.Count()}");
-        //Utility.Debug($"GetUpdatedScripture(string scripture) - _flaggedWordListCount: {_flaggedWordListCount}");
-        //_flagList[5].SetHide();
+        string _wordToHide = "";
         foreach (Word _w in _flagList)
             { 
                 if (_w.GetStatus())
                 {
-                     _scriptureList[_i] = "".PadLeft(_scriptureList[_i].Length, '_');
-                     //Console.Write($"{_scriptureList[_i]}  "); 
+                    _wordToHide = _scriptureListBase[_i];
+                    _hiddenWordList.Add($"{_wordToHide}|{_i}");  //fix the concat!
+                    _scriptureList[_i] = "".PadLeft(_scriptureList[_i].Length, '_');
                 };
                 _i++;
-            }    
-        //Console.Clear();
-        //foreach (string s in _scriptureList) {Console.Write($"{s} ");}
-        //Utility.PressAnyKey();
-
-        //Utility.Debug("GetUpdatedScripture(string scripture): About to Hide Wordes");
-        HideWords();    
-        _scripture = "";
+            }     
+        //_scripture = "";
         _scripture = string.Join(" ", _scriptureList);
         return _scripture;
     }
-
+    public void GetHiddenWordList()
+    {
+        int _ii = 0;
+        Console.WriteLine("Here is your Hidden Word List:");
+        foreach (Word _w in _flagList)
+        {
+            if (_w.GetStatus()) {Console.WriteLine(_scriptureListBase[_ii]);}
+            _ii++;
+        }
+    }
     private void HideWords()
     {
         int _randoCommando = 0;
         int _randomNumberBetween1And3 = Math.Min(Randomizer.RandomInt(3), _scriptureList.Count()); 
-        //Utility.Debug($"Get UpdatedScripture()/HideWords(): _randomNumberBetween1And3: {_randomNumberBetween1And3}");   
        for (int _i = 0; _i < _randomNumberBetween1And3; _i++)
        {
             do 
             {
                 _randoCommando = Randomizer.RandomInt(_scriptureList.Count());
-                //Utility.Debug(_flagList[_randoCommando].GetStatus());
             }
             while (_flagList[_randoCommando].GetStatus());
-            //Utility.Debug(_flagList[_randoCommando].GetStatus());
             _flagList[_randoCommando].SetHide();
        }
-
     }
     private int WordRandomizer()
     {

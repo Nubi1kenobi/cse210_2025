@@ -40,7 +40,7 @@ class Playground
         Utility.PressAnyKey();
         Console.CursorVisible = true;
     }
-    private static void ProgramPlanner()
+    public void ProgramPlanner()
     {
         string fileName = "Planning.txt";
         List<string> readingAllLines = File.ReadAllLines(fileName).ToList(); 
