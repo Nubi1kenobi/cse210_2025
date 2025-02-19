@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Security.Cryptography;
 
 class Program
 {
@@ -37,21 +38,21 @@ class Program
             Console.ReadLine();
             Console.Clear();
         }
-        while(!loopInputValidation)
+        do
         {
             Console.Clear();
             Console.CursorVisible = false;
             scripture = memorizeThis.GetUpdatedScripture(scripture);
             StringEater memorizeThisInColors = new StringEater($"{memorizeThis.GetReference()} {scripture}\n\n",true);
-            StringEater memorizeThisInColors1 = new StringEater($"Initial Words: {memorizeThis.GetScriptureWordCount()} Current Hidden Count: {memorizeThis.GetHiddenWordsCount()}\n",true);
+            StringEater memorizeThisInColors1 = new StringEater($"Initial Words: {memorizeThis.GetScriptureWordCount()} \nCurrent Hidden Count: {memorizeThis.GetHiddenWordsCount()}\n",true);
             StringEater memorizeThisInColors2 = new StringEater($"Remaining Words to Hide: {memorizeThis.GetScriptureWordCount()-memorizeThis.GetHiddenWordsCount()}\n",true);
-            memorizeThis.GetHiddenWordList();
             i++;
             loopExit = Console.ReadLine();
+            if (loopExit?.Trim().ToLower() == "cheat" ) {memorizeThis.GetHiddenWordList(); Utility.PressAnyKey();}
             if (memorizeThis.GetScriptureWordCount()-memorizeThis.GetHiddenWordsCount() <= 0) {loopInputValidation = true;}
             if (loopExit?.Trim().ToLower() == "quit" ) {loopInputValidation = true;}
-        } 
-        Console.WriteLine("/n/n/n/n/nThank you, please try again later.");
+        } while(!loopInputValidation);
+        Console.WriteLine("\n\n\n\n\nThank you, please try again later.");
         Utility.PressAnyKey();
         Console.Clear();
 

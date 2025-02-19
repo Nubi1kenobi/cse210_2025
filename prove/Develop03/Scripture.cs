@@ -90,13 +90,13 @@ public class Scripture
     public void GetHiddenWordList()
     {
         int _ii = 0;
-        Console.WriteLine("Here is your Hidden Word List:");
+        StringEater hiddenWords1 = new StringEater("\nHere is your Hidden Word List:\n",true);
         foreach (Word _w in _flagList)
         {
-            //if (_w.GetStatus()) {Console.Write($"{_scriptureListBase[_ii]} - {_ii} | ");}
-            if (_w.GetStatus()) {StringEater hiddenWords = new StringEater(($"{_scriptureListBase[_ii]} - {_ii}, true) | "));}
+            if (_w.GetStatus()) {StringEater hiddenWords2 = new StringEater($"{_scriptureListBase[_ii]} | ",true);}
             _ii++;
         }
+        Console.WriteLine(""); 
     }
     private void HideWords()
     {
