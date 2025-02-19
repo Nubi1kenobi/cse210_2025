@@ -79,12 +79,11 @@ public class Scripture
                 if (_w.GetStatus())
                 {
                     _wordToHide = _scriptureListBase[_i];
-                    _hiddenWordList.Add($"{_wordToHide}|{_i}");  //fix the concat!
+                    _hiddenWordList.Add($"{_wordToHide}"); 
                     _scriptureList[_i] = "".PadLeft(_scriptureList[_i].Length, '_');
                 };
                 _i++;
             }     
-        //_scripture = "";
         _scripture = string.Join(" ", _scriptureList);
         return _scripture;
     }
@@ -94,7 +93,8 @@ public class Scripture
         Console.WriteLine("Here is your Hidden Word List:");
         foreach (Word _w in _flagList)
         {
-            if (_w.GetStatus()) {Console.WriteLine(_scriptureListBase[_ii]);}
+            //if (_w.GetStatus()) {Console.Write($"{_scriptureListBase[_ii]} - {_ii} | ");}
+            if (_w.GetStatus()) {StringEater hiddenWords = new StringEater(($"{_scriptureListBase[_ii]} - {_ii}, true) | "));}
             _ii++;
         }
     }

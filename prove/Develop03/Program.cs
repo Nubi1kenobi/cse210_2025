@@ -15,11 +15,9 @@ class Program
         int wordCounter = 0;
         bool loopInputValidation = false;
         Console.CursorVisible = false;
-        Playground dsjkfgd = new Playground();
-        dsjkfgd.Intro();
-        dsjkfgd.PlayingAround();
-        dsjkfgd.ProgramPlanner();
-        dsjkfgd.Quit();
+        Playground BeginningAndEnding = new Playground();
+        //BeginningAndEnding.Intro();
+        //BeginningAndEnding.ProgramPlanner();
         Console.Clear();
 
         Scripture memorizeThis = new Scripture(book, chapter, beginningVerse, scripture);
@@ -39,7 +37,7 @@ class Program
             Console.ReadLine();
             Console.Clear();
         }
-        do
+        while(!loopInputValidation)
         {
             Console.Clear();
             Console.CursorVisible = false;
@@ -50,10 +48,15 @@ class Program
             memorizeThis.GetHiddenWordList();
             i++;
             loopExit = Console.ReadLine();
-            if (loopExit == "quit" || loopExit == "Quit" || loopExit == "QUIT") {loopInputValidation = true;}
-        } while(!loopInputValidation);
-        
-    } 
+            if (memorizeThis.GetScriptureWordCount()-memorizeThis.GetHiddenWordsCount() <= 0) {loopInputValidation = true;}
+            if (loopExit?.Trim().ToLower() == "quit" ) {loopInputValidation = true;}
+        } 
+        Console.WriteLine("/n/n/n/n/nThank you, please try again later.");
+        Utility.PressAnyKey();
+        Console.Clear();
+
+        //BeginningAndEnding.Quit();
+    }
 }      
 
 
