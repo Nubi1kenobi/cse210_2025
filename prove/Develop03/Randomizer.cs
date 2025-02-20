@@ -7,6 +7,7 @@ class Randomizer
         int _randomNumber;
         int _limit = limit;
         Random _randoCommando = new Random();
+        if (_randoCommando is not null) {_randomNumber = 0;}
         _randomNumber = _randoCommando.Next(1,_limit);
         return _randomNumber;
     }

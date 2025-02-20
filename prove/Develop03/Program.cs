@@ -25,7 +25,7 @@ class Program
         //scripture = memorizeThis.GetScripture(scripture);
         if (endingVerse == "") 
         {
-            scripture = memorizeThis.GetScripture(scripture);
+            memorizeThis.InitializeScripture(scripture);
             wordCounter = memorizeThis.GetScriptureWordCount();
             StringEater memorizeThisInColors = new StringEater($"{memorizeThis.GetReference()} {scripture} ",true);
             Console.ReadLine();
@@ -33,7 +33,7 @@ class Program
         }
         else if (endingVerse != "") 
         {
-            scripture = memorizeThis.GetScripture(scripture);
+            memorizeThis.InitializeScripture(scripture);
             StringEater memorizeThisInColors = new StringEater($"{memorizeThis.GetReference()} {scripture} ",true);
             Console.ReadLine();
             Console.Clear();
@@ -48,7 +48,7 @@ class Program
             StringEater memorizeThisInColors2 = new StringEater($"Remaining Words to Hide: {memorizeThis.GetScriptureWordCount()-memorizeThis.GetHiddenWordsCount()}\n",true);
             i++;
             loopExit = Console.ReadLine();
-            if (loopExit?.Trim().ToLower() == "cheat" ) {memorizeThis.GetHiddenWordList(); Utility.PressAnyKey();}
+            if (loopExit?.Trim().ToLower() == "cheat" ) {memorizeThis.GetHiddenWordList(); Console.WriteLine("\n"); Utility.PressAnyKey();}
             if (memorizeThis.GetScriptureWordCount()-memorizeThis.GetHiddenWordsCount() <= 0) {loopInputValidation = true;}
             if (loopExit?.Trim().ToLower() == "quit" ) {loopInputValidation = true;}
         } while(!loopInputValidation);

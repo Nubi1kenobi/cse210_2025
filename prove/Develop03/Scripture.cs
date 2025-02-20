@@ -11,11 +11,7 @@ public class Scripture
 {
     private string _scripture;
     private string _completeReference;
-    List<bool> _hiddenFlagList = new List<bool>();
-    List<string> _scriptureList = new List<string>();
-    List<string> _scriptureListBase = new List<string>();
-    List<string> _hiddenWordList = new List<string>();
-    List<Word> _flagList = new List<Word>();  
+    List<Word> _scriptureListWord = new List<Word>();
     public Scripture(string book, string chapter, string beginningVerse, string scripture)
     {
         string _chapter = chapter;
@@ -41,81 +37,75 @@ public class Scripture
 
     public int GetScriptureWordCount()
     {
-        int _wordCounter = _scriptureList.Count();
+        int _wordCounter = _scriptureListWord.Count();
         return _wordCounter;
     }
     public int GetHiddenWordsCount()
     {
         int _flaggedWordListCount = 0;
-        foreach (Word _w in _flagList)
+        foreach (Word word in _scriptureListWord)
         {
-            if (_w.GetStatus()) {_flaggedWordListCount = _flaggedWordListCount +1;}
+            if (word.GetStatus()) {_flaggedWordListCount = _flaggedWordListCount +1;}
         }
         return _flaggedWordListCount;
     }
-
-    public string GetScripture(string scripture)
+    public void InitializeScripture(string scripture)
     {
+        List<string> _scriptureListString = new List<string>();
         _scripture = scripture;
-        _scriptureList = scripture.Split(" ").ToList();
-        _scriptureListBase = scripture.Split(" ").ToList();
-        foreach (string _a in _scriptureList) 
+        _scriptureListString = scripture.Split(" ").ToList();
+        foreach (string word in _scriptureListString)
         {
-            Word newWord = new Word();
-            _flagList.Add(newWord);
+            Word wordWord = new Word(word);
+            _scriptureListWord.Add(wordWord);
         }
-        return _scripture;
     }
+
     public string GetUpdatedScripture(string scripture)
     {
-        _scripture = scripture;
-        _scriptureList = scripture.Split(" ").ToList();
-        
+        List<string> _scriptureList = new List<string>();
         HideWords();  
-        int _i = 0;
-        string _wordToHide = "";
-        foreach (Word _w in _flagList)
-            { 
-                if (_w.GetStatus())
-                {
-                    _wordToHide = _scriptureListBase[_i];
-                    _hiddenWordList.Add($"{_wordToHide}"); 
-                    _scriptureList[_i] = "".PadLeft(_scriptureList[_i].Length, '_');
-                };
-                _i++;
-            }     
-        _scripture = string.Join(" ", _scriptureList);
-        return _scripture;
+        foreach (Word word in _scriptureListWord)
+        {
+            string cheese = word.GetWord();
+            if (word.GetStatus()) {cheese = "".PadLeft(cheese.Length, '_');} 
+            _scriptureList.Add(cheese);
+        }
+        string _scriptureLocal = string.Join(" ", _scriptureList);
+        return _scriptureLocal;
     }
     public void GetHiddenWordList()
     {
-        int _ii = 0;
-        StringEater hiddenWords1 = new StringEater("\nHere is your Hidden Word List:\n",true);
-        foreach (Word _w in _flagList)
+        int i = 0;
+        StringEater youAreACheater1 = new StringEater("\nHere is your Hidden Word List:\n",true);
+        foreach (Word word in _scriptureListWord)
         {
-            if (_w.GetStatus()) {StringEater hiddenWords2 = new StringEater($"{_scriptureListBase[_ii]} | ",true);}
-            _ii++;
+            string cheese = $"{word.GetWord()} ({i+1}) | ";
+            if (word.GetStatus()) {StringEater youAreACheater2 = new StringEater(cheese,true);}
+            i++;
         }
-        Console.WriteLine(""); 
     }
     private void HideWords()
     {
         int _randoCommando = 0;
-        int _randomNumberBetween1And3 = Math.Min(Randomizer.RandomInt(3), _scriptureList.Count()); 
-       for (int _i = 0; _i < _randomNumberBetween1And3; _i++)
-       {
-            do 
+        int _randomNumberBetween1And3 = Math.Min(Randomizer.RandomInt(3), _scriptureListWord.Count()); 
+        if (GetScriptureWordCount() - GetHiddenWordsCount() <= 3) {_randomNumberBetween1And3 = 1;}
+        if (GetScriptureWordCount() - GetHiddenWordsCount() > 0) 
+        {     
+            for (int i = 0; i < _randomNumberBetween1And3; i++)
             {
-                _randoCommando = Randomizer.RandomInt(_scriptureList.Count());
+                if (GetScriptureWordCount()-GetHiddenWordsCount() <= 0) {break;}
+                    do 
+                    {
+                        if (GetScriptureWordCount()-GetHiddenWordsCount() <= 0) {break;}
+                        _randoCommando = Randomizer.RandomInt(_scriptureListWord.Count());
+                        //Random _random = new Random();
+                        //_randoCommando = _random.Next(1,_scriptureListWord.Count());
+                    }
+                    while (_scriptureListWord[_randoCommando].GetStatus());
+                    _scriptureListWord[_randoCommando].SetHide();
             }
-            while (_flagList[_randoCommando].GetStatus());
-            _flagList[_randoCommando].SetHide();
-       }
-    }
-    private int WordRandomizer()
-    {
-        int _randomNumber = Randomizer.RandomInt(_scriptureList.Count());
-        return _randomNumber;
+        }
     }
         
  
