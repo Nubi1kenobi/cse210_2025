@@ -23,6 +23,14 @@ public class StringEater
         StandardDisplay();
     } 
 
+        public StringEater(string eatenString, int digestiveDelay, bool randoColorChar)
+    {
+        _eatenString = eatenString;
+        _digestiveDelay = digestiveDelay;
+        _randoColorChar = randoColorChar;
+        StandardDisplay();
+    }  
+
         public StringEater(string eatenString, int digestiveDelay, bool horizontalMovement,int horizontalMoveUnits, bool verticalMovement, int verticalMoveUnits, bool randoColorChar)
     {
         _eatenString = eatenString;

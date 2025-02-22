@@ -9,6 +9,7 @@ using Microsoft.Win32.SafeHandles;
 
 public class Scripture
 {
+    //public int _test = 0;
     private string _scripture;
     private string _completeReference;
     List<Word> _scriptureListWord = new List<Word>();
@@ -87,23 +88,34 @@ public class Scripture
     }
     private void HideWords()
     {
-        int _randoCommando = 0;
-        int _randomNumberBetween1And3 = Math.Min(Randomizer.RandomInt(3), _scriptureListWord.Count()); 
-        if (GetScriptureWordCount() - GetHiddenWordsCount() <= 3) {_randomNumberBetween1And3 = 1;}
+        //Console.WriteLine($"(GetScriptureWordCount() - GetHiddenWordsCount() =: {GetScriptureWordCount() - GetHiddenWordsCount()})");
         if (GetScriptureWordCount() - GetHiddenWordsCount() > 0) 
-        {     
-            for (int i = 0; i < _randomNumberBetween1And3; i++)
+        {
+            int _randoCommando = 0;
+            int _randomNumberBetween1And3 = Math.Min(Randomizer.RandomInt(3), _scriptureListWord.Count()); 
+            if (GetScriptureWordCount() - GetHiddenWordsCount() <= 3) {_randomNumberBetween1And3 = 1;}
+            
+            {   
+                for (int i = 0; i < _randomNumberBetween1And3; i++)
+                {
+                        do 
+                        {
+                            _randoCommando = Randomizer.RandomInt(_scriptureListWord.Count());
+                            Random _random = new Random();
+                            _randoCommando = _random.Next(0,_scriptureListWord.Count());
+                        }
+                        while (_scriptureListWord[_randoCommando].GetStatus());
+                        _scriptureListWord[_randoCommando].SetHide();
+                }
+            }
+        }
+        else 
+        {
+            int i = 0;
+            foreach (Word truth in _scriptureListWord)
             {
-                if (GetScriptureWordCount()-GetHiddenWordsCount() <= 0) {break;}
-                    do 
-                    {
-                        if (GetScriptureWordCount()-GetHiddenWordsCount() <= 0) {break;}
-                        _randoCommando = Randomizer.RandomInt(_scriptureListWord.Count());
-                        //Random _random = new Random();
-                        //_randoCommando = _random.Next(1,_scriptureListWord.Count());
-                    }
-                    while (_scriptureListWord[_randoCommando].GetStatus());
-                    _scriptureListWord[_randoCommando].SetHide();
+                if (truth.GetStatus()){_scriptureListWord[i].SetHide();}
+                i++;
             }
         }
     }

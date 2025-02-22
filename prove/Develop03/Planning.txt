@@ -1,23 +1,43 @@
-                                            ┌─────────────────────────────────────────────┐
-                                            │Scripture                                    │
-┌────────────────────────────────────────┐  ├─────────────────────────────────────────────┤
-│ScriptureReference                      │  │- Reference: string                          │
-├────────────────────────────────────────┤  │- Text: string                               │
-│- Book: string                          │  │- Words: string[]                            │
-│- Chapter: int                          │  │- WordCount: int                             │
-│- VerseStart: int                       │  │- HiddenWordIndices: HashSet<int>            │
-│- VerseEnd: int                         │  │+ Scripture (reference: string, text: string)│
-│+ ScriptureReference (reference: string)│  │+ HideWord (index: int): void                │
-│+ GetFormattedReference (): string      │  │+ ShowWord (index: int): void                │
-└────────────────────────────────────────┘  │+ IsWordHidden (index: int): bool            │
-                                            │+ GetRenderedText (): string                 │
-                                            └─────────────────────────────────────────────┘
-                                                                                           
-                                                                                           
-      ┌────────────────────────────┐                                                       
-      │Word                        │                                                       
-      ├────────────────────────────┤                                                       
-      │- scripture: Scripture      │                                                       
-      │+ Word(scripture: Scripture)│                                                       
-      │+ Play(): void              │                                                       
-      └────────────────────────────┘                                                  
+                                                                 ┌────────────────────────┐                                         
+             ┌─────────────────┐                                 │Reference               │                                         
+             │Playground       │   ┌─────────────────────────┐   ├────────────────────────┤                                         
+             ├─────────────────┤   │Randomizer               │   │-_book : string         │                                         
+             │+Intro()         │   ├─────────────────────────┤   │-_chapter : string      │                                         
+             │+ProgramPlanner()│   │+RandomInt(int parameter)│   │-_verseBegining : string│                                         
+             │+Quit()          │   │+RandomConsoleColor()    │   │-_verseEnding : string  │                                         
+             └─────────────────┘   └─────────────────────────┘   │+GetReference()         │                                         
+                                                                 └────────────────────────┘                                         
+                                                                                                                                    
+                                                                                                                                    
+┌────────────────────────────────────────────┐                                                                                      
+│Scripture                                   │                                                                                      
+├────────────────────────────────────────────┤                                                                                      
+│-_scripture : string                        │  ┌───────────────────────────────────────────────────┐                               
+│-_completeReference :string                 │  │StringEater                                        │                               
+│-_scriptureList : Word;                     │  ├───────────────────────────────────────────────────┤   ┌──────────────────────────┐
+│+Scripture(book : string, chapter : string, │  │+StringEater(eatenString : string)                 │   │Utility                   │
+│beginningVerse : string,                    │  │+StringEater(eatenString : string,                 │   ├──────────────────────────┤
+│scripture : string)                         │  │randomColor : bool)                                │   │+Debug()                  │
+│+Scripture(book : string, chapter : string, │  │+StringEater(eatenString : string,                 │   │+Debug(parameter : bool)  │
+│beginningVerse : string,                    │  │digestiveDelay : int, randomColor : bool)          │   │+Debug(parameter : string)│
+│endingVerse : string,                       │  │+StringEater(eatenString : string,                 │   │+Debug(parameter : int)   │
+│scripture : string)                         │  │digestiveDelay : int, horizontalMovement : bool,   │   │-Log(message: string)     │
+│+GetReference()                             │  │horizontalMoveUnits : int, verticalMovement : bool,│   │+PressAnyKey()            │
+│+GetScriptureWordCount()                    │  │verticallMoveUnits : int, randomColor : bool)      │   └──────────────────────────┘
+│+GetHiddenWordsCount()                      │  │+DisplatVertical()                                 │                               
+│+InitializeScripture(scripture : string)    │  │+StandardDisplay()                                 │                               
+│+GetUpdatedScripture(scripture : string)    │  └───────────────────────────────────────────────────┘                               
+│+GetHiddenWordList()                        │                                                                                      
+│-HideWords()                                │                                                                                      
+└────────────────────────────────────────────┘                                                                                      
+                                                                                                                                    
+            ┌────────────────────┐                                                                                                  
+            │Word                │                                                                                                  
+            ├────────────────────┤                                                                                                  
+            │-isHidden : bool    │                                                                                                  
+            │_theWord : string   │                                                                                                  
+            │Word(word : string) │                                                                                                  
+            │+SetHide() : void;  │                                                                                                  
+            │+GetWord() : string;│                                                                                                  
+            │+GetStatus() : bool;│                                                                                                  
+            └────────────────────┘                                                                                                  

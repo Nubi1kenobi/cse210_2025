@@ -27,7 +27,7 @@ class Playground
         string welcomeMessage = "<Let's Memorize a Scripture Together!> ";
         for (int i = 0; i < 60; i++)
         {
-           for (int ii = 0; ii < 4; ii++)
+           for (int ii = 0; ii < 3; ii++)
            {
               StringEater randomColoredChar = new StringEater(welcomeMessage, true);
               Console.Write(" ");
