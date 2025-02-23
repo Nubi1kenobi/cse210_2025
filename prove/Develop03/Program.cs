@@ -35,7 +35,7 @@ class Program
                 StringEater memorizeThisInColors = new StringEater($"{memorizeThis.GetReference()} {scripture} ",true);
                 loopExit = Console.ReadLine();
                 if (loopExit?.Trim().ToLower() == "cheat" ) {memorizeThis.GetHiddenWordList(); Console.WriteLine("\n"); Utility.PressAnyKey();}
-                if (memorizeThis.GetScriptureWordCount()-memorizeThis.GetHiddenWordsCount() == 0) {innerLoopInputValidation = true;}//{System.Environment.Exit(0);}//{loopInputValidation = true;}
+                if (memorizeThis.GetScriptureWordCount()-memorizeThis.GetHiddenWordsCount() == 0) {innerLoopInputValidation = true;}
                 if (loopExit?.Trim().ToLower() == "quit" ) {innerLoopInputValidation = true; Console.Clear(); StringEater quiter = new StringEater("Thank you, please try again later.",35,true);return;}
                 Console.Clear();
             }
@@ -45,7 +45,7 @@ class Program
                 StringEater memorizeThisInColors = new StringEater($"{memorizeThis.GetReference()} {scripture} ",true);
                 loopExit = Console.ReadLine();
                 if (loopExit?.Trim().ToLower() == "cheat" ) {memorizeThis.GetHiddenWordList(); Console.WriteLine("\n"); Utility.PressAnyKey();}
-                if (memorizeThis.GetScriptureWordCount()-memorizeThis.GetHiddenWordsCount() == 0) {innerLoopInputValidation = true;}//{System.Environment.Exit(0);}//{loopInputValidation = true;}
+                if (memorizeThis.GetScriptureWordCount()-memorizeThis.GetHiddenWordsCount() == 0) {innerLoopInputValidation = true;}
                 if (loopExit?.Trim().ToLower() == "quit" ) {innerLoopInputValidation = true; Console.Clear(); StringEater quiter = new StringEater("Thank you, please try again later.",35,true);return;}
                 Console.Clear();
             }
@@ -60,7 +60,7 @@ class Program
                 i++;
                 loopExit = Console.ReadLine();
                 if (loopExit?.Trim().ToLower() == "cheat" ) {memorizeThis.GetHiddenWordList(); Console.WriteLine("\n"); Utility.PressAnyKey();}
-                if (memorizeThis.GetScriptureWordCount()-memorizeThis.GetHiddenWordsCount() == 0) {innerLoopInputValidation = true;}//{System.Environment.Exit(0);}//{loopInputValidation = true;}
+                if (memorizeThis.GetScriptureWordCount()-memorizeThis.GetHiddenWordsCount() == 0) {innerLoopInputValidation = true;}
                 if (loopExit?.Trim().ToLower() == "quit" ) {innerLoopInputValidation = true; Console.Clear(); StringEater quiter = new StringEater("Thank you, please try again later.",35,true);return;}
             } while(!innerLoopInputValidation);
             Console.Clear();
