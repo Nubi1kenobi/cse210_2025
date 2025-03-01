@@ -2,32 +2,79 @@ using System;
 using System.ComponentModel.Design;
 class CountTo10
 {
-    int _low;
-    int _high;
-    bool _countDown;
-    bool randomLanguage;
-    List<string> english = new List<string>(){"one","two","three","for","five","six","seven","eight","nine","ten"};
-    List<string> japanese = new List<string>(){"ichi","ni","san","shi","go","roku","shichi","hachi","kyuu","juu"};
-    List<string> spanish = new List<string>(){"uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"};
-    List<string> french = new List<string>(){"un","deux","tois","quatre","cinq","six","sept","huit","Neuf","dix"};
-    List<string> chinese = new List<string>(){"yī","èr","sān","sì","wǔ","liù","qī","bā","jiǔ","shí"};
-    List<string> arabic = new List<string>(){"wahid","ethnein","thalatha","arba'a","khamsa","sitta","sab'a","tamaniya","tis-a","ashara"};
-    List<string> russian = new List<string>(){"odin","dva","tri","chetyre","pyat","shest","sem","vosem","deviat","desiat"};
-    List<string> german = new List<string>(){"eins","zwei","drei","vier","fünf","sechs","sieben","acht","neun","zehn"};
-    List<string> hebrew = new List<string>(){"echad","shnayim","shlosha","arba","chamisha","shisha","shiv'a","shmona","tisha","asara"};
-    List<string> binary = new List<string>(){"0000","0001","0100","0101","0110","0111","1000","1001","1010"};
+    private int _low;
+    private int _high;
+    private bool _countDown;
+    private bool _randomLanguage;
+    private int _randomLanguageInt;
+    private List<string> _randomLanguageList = new List<string>(){};
+    private List<string> _english = new List<string>(){"one","two","three","four","five","six","seven","eight","nine","ten"};
+    private List<string> _japanese = new List<string>(){"ichi","ni","san","shi","go","roku","shichi","hachi","kyuu","juu"};
+    private List<string> _spanish = new List<string>(){"uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"};
+    private List<string> _french = new List<string>(){"un","deux","tois","quatre","cinq","six","sept","huit","Neuf","dix"};
+    private List<string> _chinese = new List<string>(){"yī","èr","sān","sì","wǔ","liù","qī","bā","jiǔ","shí"};
+    private List<string> _arabic = new List<string>(){"wahid","ethnein","thalatha","arba'a","khamsa","sitta","sab'a","tamaniya","tis-a","ashara"};
+    private List<string> _russian = new List<string>(){"odin","dva","tri","chetyre","pyat","shest","sem","vosem","deviat","desiat"};
+    private List<string> _german = new List<string>(){"eins","zwei","drei","vier","fünf","sechs","sieben","acht","neun","zehn"};
+    private List<string> _hebrew = new List<string>(){"echad","shnayim","shlosha","arba","chamisha","shisha","shiv'a","shmona","tisha","asara"};
+    private List<string> _binary = new List<string>(){"0000","0001","0100","0101","0110","0111","1000","1001","1010"};
 
-    public CountTo10(int low, int high, bool countDown, bool randomLanguage) //base constructor
+    public CountTo10(int low, int high, bool countDown, bool randomLanguage)
     {
         if (low <1) {_low = 1;}
         if (high > 10) {_high = 10;}
-        if (countDown = false) 
+        if (countDown == false) 
+        RandomLangCase(RandomizeLaguages()); 
+        //RandomLangCase(1); 
         {
-            for (int i = low; i < high; i++) {StringEater mySacrafice = new StringEater($"{i}", 10, true); Utility.PressAnyKey();}    
+            for (int i = low; i < high; i++) 
+            {
+                StringEater mySacrafice = new StringEater($"({i}.) {_randomLanguageList[i-1]} ", 0, true); 
+                Thread.Sleep(1000);
+            }
+            Console.WriteLine("\n");
         }
         
     }
+    private int RandomizeLaguages() {return Randomizer.RandomInt(10);}
+    private void RandomLangCase(int parameter)
+    {
+         switch (parameter)
+        {
+            case 1:
+                _randomLanguageList = _english;
+                return;
+            case 2:
+                _randomLanguageList = _japanese;
+                return;
+            case 3:
+                _randomLanguageList = _spanish;
+                return;
+            case 4:
+                _randomLanguageList = _french;
+                return;
+            case 5:
+                _randomLanguageList = _chinese;
+                return;
+            case 6:
+                _randomLanguageList = _arabic;
+                return;
+            case 7:
+                _randomLanguageList = _russian;
+                return;
+            case 8:
+                _randomLanguageList = _german;
+                return;
+            case 9:
+                _randomLanguageList = _hebrew;
+                return;
+            case 10:
+                _randomLanguageList = _binary;
+                return;
 
-    //public void
+            default:
+                return;
+        }
+    } 
 
 }

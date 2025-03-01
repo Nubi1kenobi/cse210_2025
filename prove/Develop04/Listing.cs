@@ -1,21 +1,21 @@
 using System;
 public class Listing : Activity 
-{
-    private int _delay1;
-
-    public Listing(string intro, string exit, int delay) : base(intro, exit, delay)
+{    
+    public Listing(string intro, string exit, int messageDelay, int textDelay) : base(intro, exit, messageDelay, textDelay)
     {
-        _delay = delay;
-        StringEater reflectingIntro = new StringEater(intro, delay, true);
-        Utility.PressAnyKey();
+        StringEater breathingIntro = new StringEater(intro, textDelay, true);
+        Thread.Sleep(messageDelay);
+        Console.Clear();
         RunListing();
-        StringEater reflectingExit = new StringEater(exit, delay, true);
-        Utility.PressAnyKey();
+        Thread.Sleep(messageDelay);
+        Console.Clear();
+        StringEater listingExit = new StringEater(exit, textDelay, true);
+        Thread.Sleep(messageDelay);
     }   
     public void RunListing() 
     {
         Console.Clear();
-        StringEater reflectingActivity = new StringEater("Commence your Listing!\n", _delay, true);
-        Utility.PressAnyKey();
-    }
+        StringEater listingActivity = new StringEater("Commence your Listing!\n", _textDelay, true);
+        Thread.Sleep(_messageDelay);
+    }  
 }

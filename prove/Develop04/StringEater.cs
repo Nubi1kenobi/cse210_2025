@@ -9,6 +9,9 @@ public class StringEater
     private int _hMoveUnits = 0;
     private int _vMoveUnits = 0;
 
+    public StringEater()
+    {
+    } 
     public StringEater(string eatenString)
     {
         _eatenString = eatenString;
@@ -42,6 +45,27 @@ public class StringEater
         _randoColorChar = randoColorChar;
         StandardDisplay();
     }  
+    
+    public void Vibrance(string parameter)
+    {
+        Console.CursorVisible = false;
+        string functionInput = parameter;
+        bool hasToEnd = false;
+        int lineBuffer = functionInput.Length;
+        while (!hasToEnd)
+        {
+            foreach (char c in functionInput) 
+                {
+                    if (Console.KeyAvailable) {hasToEnd = true; Console.ReadKey(true); break;}
+                    StringEater beep = new StringEater(c.ToString(), 10, true);
+                };
+            if (Console.CursorLeft + 1 >= lineBuffer ) {Console.SetCursorPosition(0, Console.CursorTop);}
+            if (hasToEnd) {break;}
+        }
+        Console.ForegroundColor = ConsoleColor.White;
+        foreach (char c in functionInput) {Console.Write(" ");}
+        Console.SetCursorPosition(0, Console.CursorTop);
+    }
     private void DisplayVertical()
     {
         List<char> digestedString = _eatenString.ToList();

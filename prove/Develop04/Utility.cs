@@ -48,22 +48,8 @@ private static void Log(string message)
     public static void PressAnyKey()
     {
         Console.CursorVisible = false;
-        string pressanykey = "<Press Any Key>";
-        bool hasToEnd = false;
-        int lineBuffer = pressanykey.Length;
-        while (!hasToEnd)
-        {
-            foreach (char c in pressanykey) 
-                {
-                    if (Console.KeyAvailable) {hasToEnd = true; Console.ReadKey(true); break;}
-                    StringEater beep = new StringEater(c.ToString(), 10, true);
-                };
-            if (Console.CursorLeft + 1 >= lineBuffer ) {Console.SetCursorPosition(0, Console.CursorTop);}
-            if (hasToEnd) {break;}
-        }
-        Console.ForegroundColor = ConsoleColor.White;
-        Console.Write("                    ");
-        Console.SetCursorPosition(0, Console.CursorTop);
+        StringEater pressAnyKey = new StringEater();
+        pressAnyKey.Vibrance("<Press Any Key>");
 
     }
     

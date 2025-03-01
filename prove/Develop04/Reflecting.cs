@@ -1,22 +1,21 @@
 using System;
 public class Reflecting : Activity 
 {
-    private int _delay1;
-
-    //public Reflecting(string intro, string exit, string title) : base(intro, exit)
-    public Reflecting(string intro, string exit, int delay) : base(intro, exit, delay)
+   public Reflecting(string intro, string exit, int messageDelay, int textDelay) : base(intro, exit, messageDelay, textDelay)
     {
-        _delay1 = delay;
-        StringEater reflectingIntro = new StringEater(intro, delay, true);
-        Utility.PressAnyKey();
-        RunRefelcting();
-        StringEater reflectingExit = new StringEater(exit, delay, true);
-        Utility.PressAnyKey();
+        StringEater breathingIntro = new StringEater(intro, textDelay, true);
+        Thread.Sleep(messageDelay);
+        Console.Clear();
+        RunReflecting();
+        Thread.Sleep(messageDelay);
+        Console.Clear();
+        StringEater reflectingExit = new StringEater(exit, textDelay, true);
+        Thread.Sleep(messageDelay);
     }   
-    public void RunRefelcting() 
+    public void RunReflecting() 
     {
         Console.Clear();
-        StringEater reflectingActivity = new StringEater("Commence your Reflecting!\n", _delay1, true);
-        Utility.PressAnyKey();
-    }
+        StringEater reflectingActivity = new StringEater("Commence your Reflecting!\n", _textDelay, true);
+        Thread.Sleep(_messageDelay);
+    }  
 }
