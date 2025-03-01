@@ -18,13 +18,11 @@ class Program
         {
             int menuDelay = 15;
             string menuSelector;
+            string menu = "Welcome to your Mindfullness App - We Relax When You Relax\n\n1. Breathing Activity\n2. Reflection Activity\n3. Listing Activity\n0. Quit ==>> ";
             Console.Clear();
-            //Utility.PressAnyKey(); 
-            StringEater menuMessage = new StringEater("Welcome to your Mindfullness App - We Relax When You Relax\n\n", menuDelay ,true);
-            StringEater menu1 = new StringEater("1. Breathing Activity\n", menuDelay ,true);
-            StringEater menu2 = new StringEater("2. Reflection Activity\n", menuDelay ,true);
-            StringEater menu3 = new StringEater("3. Listing Activity\n", menuDelay ,true);
-            StringEater menu0 = new StringEater("0. Quit ==>> ", menuDelay ,true);
+            CountTo10 yes = new CountTo10(1,10,false,false); 
+            Utility.PressAnyKey();  
+            StringEater menuMessage = new StringEater(menu, menuDelay ,true);
             menuSelector = Console.ReadLine();
             MenuOptions(menuSelector);
                 if (menuSelector == "0") {looptyLoop = false;}

@@ -2,6 +2,10 @@ using System;
 using System.ComponentModel.Design;
 class CountTo10
 {
+    int _low;
+    int _high;
+    bool _countDown;
+    bool randomLanguage;
     List<string> english = new List<string>(){"one","two","three","for","five","six","seven","eight","nine","ten"};
     List<string> japanese = new List<string>(){"ichi","ni","san","shi","go","roku","shichi","hachi","kyuu","juu"};
     List<string> spanish = new List<string>(){"uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"};
@@ -13,9 +17,15 @@ class CountTo10
     List<string> hebrew = new List<string>(){"echad","shnayim","shlosha","arba","chamisha","shisha","shiv'a","shmona","tisha","asara"};
     List<string> binary = new List<string>(){"0000","0001","0100","0101","0110","0111","1000","1001","1010"};
 
-    public CountTo10() //base constructor
+    public CountTo10(int low, int high, bool countDown, bool randomLanguage) //base constructor
     {
-        for (int i = 0; i < 11; i++) {StringEater mySacrafice = new StringEater($"{i}", 10, true); }
+        if (low <1) {_low = 1;}
+        if (high > 10) {_high = 10;}
+        if (countDown = false) 
+        {
+            for (int i = low; i < high; i++) {StringEater mySacrafice = new StringEater($"{i}", 10, true); Utility.PressAnyKey();}    
+        }
+        
     }
 
     //public void

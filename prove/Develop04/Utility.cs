@@ -50,6 +50,7 @@ private static void Log(string message)
         Console.CursorVisible = false;
         string pressanykey = "<Press Any Key>";
         bool hasToEnd = false;
+        int lineBuffer = pressanykey.Length;
         while (!hasToEnd)
         {
             foreach (char c in pressanykey) 
@@ -57,7 +58,7 @@ private static void Log(string message)
                     if (Console.KeyAvailable) {hasToEnd = true; Console.ReadKey(true); break;}
                     StringEater beep = new StringEater(c.ToString(), 10, true);
                 };
-            if (Console.CursorLeft + 1 >= 15) {Console.SetCursorPosition(0, Console.CursorTop);}
+            if (Console.CursorLeft + 1 >= lineBuffer ) {Console.SetCursorPosition(0, Console.CursorTop);}
             if (hasToEnd) {break;}
         }
         Console.ForegroundColor = ConsoleColor.White;
