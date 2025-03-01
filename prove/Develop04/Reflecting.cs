@@ -8,8 +8,10 @@ public class Reflecting : Activity
     {
         _delay1 = delay;
         StringEater reflectingIntro = new StringEater(intro, delay, true);
+        Utility.PressAnyKey();
         RunRefelcting();
-        StringEater reflectingExit = new StringEater(intro, delay, true);
+        StringEater reflectingExit = new StringEater(exit, delay, true);
+        Utility.PressAnyKey();
     }   
     public void RunRefelcting() 
     {

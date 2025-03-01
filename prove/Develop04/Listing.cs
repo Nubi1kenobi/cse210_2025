@@ -7,8 +7,10 @@ public class Listing : Activity
     {
         _delay = delay;
         StringEater reflectingIntro = new StringEater(intro, delay, true);
+        Utility.PressAnyKey();
         RunListing();
-        StringEater reflectingExit = new StringEater(intro, delay, true);
+        StringEater reflectingExit = new StringEater(exit, delay, true);
+        Utility.PressAnyKey();
     }   
     public void RunListing() 
     {

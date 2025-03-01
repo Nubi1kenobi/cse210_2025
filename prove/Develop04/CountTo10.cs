@@ -4,7 +4,7 @@ class CountTo10
 {
     List<string> english = new List<string>(){"one","two","three","for","five","six","seven","eight","nine","ten"};
     List<string> japanese = new List<string>(){"ichi","ni","san","shi","go","roku","shichi","hachi","kyuu","juu"};
-    List<string> spanish = new List<string>(){"uno", "dos", "tre", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"};
+    List<string> spanish = new List<string>(){"uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"};
     List<string> french = new List<string>(){"un","deux","tois","quatre","cinq","six","sept","huit","Neuf","dix"};
     List<string> chinese = new List<string>(){"yī","èr","sān","sì","wǔ","liù","qī","bā","jiǔ","shí"};
     List<string> arabic = new List<string>(){"wahid","ethnein","thalatha","arba'a","khamsa","sitta","sab'a","tamaniya","tis-a","ashara"};

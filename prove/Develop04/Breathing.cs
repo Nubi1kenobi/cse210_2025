@@ -9,8 +9,11 @@ public class Breathing : Activity
     {
         _delay1 = delay;
         StringEater breathingIntro = new StringEater(intro, delay, true);
+        Utility.PressAnyKey();
         RunBreathing();
-        StringEater breathingExit = new StringEater(intro, delay, true);
+        StringEater breathingExit = new StringEater(exit, delay, true);
+        Utility.PressAnyKey();
+
     }   
     public void RunBreathing() 
     {

@@ -49,11 +49,21 @@ private static void Log(string message)
     {
         Console.CursorVisible = false;
         string pressanykey = "<Press Any Key>";
-        StringEater randomColoredChar = new StringEater(pressanykey, 50, true, 0, false, 0, true);
-        Console.ReadKey();
-        Console.Clear();
-        //Console.CursorVisible = true;
+        bool hasToEnd = false;
+        while (!hasToEnd)
+        {
+            foreach (char c in pressanykey) 
+                {
+                    if (Console.KeyAvailable) {hasToEnd = true; Console.ReadKey(true); break;}
+                    StringEater beep = new StringEater(c.ToString(), 10, true);
+                };
+            if (Console.CursorLeft + 1 >= 15) {Console.SetCursorPosition(0, Console.CursorTop);}
+            if (hasToEnd) {break;}
+        }
         Console.ForegroundColor = ConsoleColor.White;
+        Console.Write("                    ");
+        Console.SetCursorPosition(0, Console.CursorTop);
+
     }
     
 }
