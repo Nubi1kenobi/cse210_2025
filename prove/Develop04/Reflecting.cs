@@ -1,21 +1,18 @@
 using System;
 public class Reflecting : Activity 
 {
-   public Reflecting(string intro, string exit, int messageDelay, int textDelay) : base(intro, exit, messageDelay, textDelay)
+   public Reflecting() : base()
     {
-        StringEater breathingIntro = new StringEater(intro, textDelay, true);
-        Thread.Sleep(messageDelay);
-        Console.Clear();
-        RunReflecting();
-        Thread.Sleep(messageDelay);
-        Console.Clear();
-        StringEater reflectingExit = new StringEater(exit, textDelay, true);
-        Thread.Sleep(messageDelay);
+        _activity = "Reflection";
+        _activityDescription = "This activity will help you reflect on times in your life when you have shown strength and resilience.\nThis will help you recognize the power you have and how you can use it in other aspects of your life.";
+        WelcomeMsg();
+        RunReflecting(); 
     }   
     public void RunReflecting() 
     {
         Console.Clear();
-        StringEater reflectingActivity = new StringEater("Commence your Reflecting!\n", _textDelay, true);
+        StringEater reflectingActivity = new StringEater("Commence your Reflecting!\n", 15, true);
         Thread.Sleep(_messageDelay);
+        //We must always remember to take a pause and reflect on our blessings every day.
     }  
 }

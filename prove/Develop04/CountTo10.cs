@@ -18,18 +18,30 @@ class CountTo10
     private List<string> _german = new List<string>(){"eins","zwei","drei","vier","fünf","sechs","sieben","acht","neun","zehn"};
     private List<string> _hebrew = new List<string>(){"echad","shnayim","shlosha","arba","chamisha","shisha","shiv'a","shmona","tisha","asara"};
     private List<string> _binary = new List<string>(){"0000","0001","0100","0101","0110","0111","1000","1001","1010"};
-
-    public CountTo10(int low, int high, bool countDown, bool randomLanguage)
+    public void CountUp(int low, int high)
     {
         if (low <1) {_low = 1;}
-        if (high > 10) {_high = 10;}
-        if (countDown == false) 
+        if (high > 10) {_high = 10;} 
         RandomLangCase(RandomizeLaguages()); 
-        //RandomLangCase(1); 
         {
             for (int i = low; i < high; i++) 
             {
-                StringEater mySacrafice = new StringEater($"({i}.) {_randomLanguageList[i-1]} ", 0, true); 
+                StringEater mySacrafice1 = new StringEater($"({i}.) {_randomLanguageList[i-1]} ", 0, true); 
+                Thread.Sleep(1000);
+            }
+            Console.WriteLine("\n");
+        }
+        
+    }
+    public void CountDown(int low, int high)
+    {
+        if (low <1) {_low = 1;}
+        if (high > 10) {_high = 10;} 
+        RandomLangCase(RandomizeLaguages()); 
+        {
+            for (int i = high; i > low; i--) 
+            {
+                StringEater mySacrafice2 = new StringEater($"({i}.) {_randomLanguageList[i-1]} ", 0, true); 
                 Thread.Sleep(1000);
             }
             Console.WriteLine("\n");
@@ -39,7 +51,7 @@ class CountTo10
     private int RandomizeLaguages() {return Randomizer.RandomInt(10);}
     private void RandomLangCase(int parameter)
     {
-         switch (parameter)
+        switch (parameter)
         {
             case 1:
                 _randomLanguageList = _english;
@@ -75,6 +87,5 @@ class CountTo10
             default:
                 return;
         }
-    } 
-
-}
+    }    
+} 

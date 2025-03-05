@@ -49,7 +49,7 @@ private static void Log(string message)
     {
         Console.CursorVisible = false;
         StringEater pressAnyKey = new StringEater();
-        pressAnyKey.Vibrance("<Press Any Key>");
+        pressAnyKey.Vibrance("<Press Any Key>",10,0);
 
     }
     

@@ -1,4 +1,3 @@
-using System;
 public class StringEater
 {
     private string _eatenString;
@@ -46,33 +45,87 @@ public class StringEater
         StandardDisplay();
     }  
     
-    public void Vibrance(string parameter)
+    public void Vibrance(string chewedUpString, int charDelay, int curserPos)
     {
         Console.CursorVisible = false;
-        string functionInput = parameter;
+        string _functionInput = chewedUpString;
         bool hasToEnd = false;
-        int lineBuffer = functionInput.Length;
+        int _lineBuffer = _functionInput.Length;
         while (!hasToEnd)
         {
-            foreach (char c in functionInput) 
+            foreach (char c in _functionInput) 
                 {
                     if (Console.KeyAvailable) {hasToEnd = true; Console.ReadKey(true); break;}
-                    StringEater beep = new StringEater(c.ToString(), 10, true);
+                    StringEater beep = new StringEater(c.ToString(), charDelay, true);
                 };
-            if (Console.CursorLeft + 1 >= lineBuffer ) {Console.SetCursorPosition(0, Console.CursorTop);}
+            if (Console.CursorLeft + 1 >= _lineBuffer ) {Console.SetCursorPosition(curserPos, Console.CursorTop);}
             if (hasToEnd) {break;}
         }
         Console.ForegroundColor = ConsoleColor.White;
-        foreach (char c in functionInput) {Console.Write(" ");}
-        Console.SetCursorPosition(0, Console.CursorTop);
+        foreach (char c in _functionInput) {Console.Write(" ");}
+        Console.SetCursorPosition(curserPos, Console.CursorTop);
     }
-    private void DisplayVertical()
+    public void Vibrance2(string chewedUpString, int charDelay, int curserPos)
     {
-        List<char> digestedString = _eatenString.ToList();
-        foreach (char c in digestedString)
+        Console.CursorVisible = false;
+        string _functionInput = chewedUpString;
+        bool hasToEnd = false;
+        int lineBuffer = _functionInput.Length;
+        (int left, int top) = Console.GetCursorPosition();      
+        while (!hasToEnd)
         {
-            Console.WriteLine(c);
+            Console.SetCursorPosition(left - 5, top);
+            foreach (char c in _functionInput) 
+                {
+                    if (Console.KeyAvailable) {hasToEnd = true; Console.ReadKey(true); break;}
+                    StringEater beep = new StringEater(c.ToString(), charDelay, true);
+                    
+                };
+            if (hasToEnd) {break;}
         }
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+     public string MenuVibrance(string chewedUpString, int charDelay, int curserPos)
+    {
+        Console.CursorVisible = false;
+        string functionInput = chewedUpString;
+        bool hasToEnd = false;
+        int lineBuffer = functionInput.Length;
+        string keyPress = "5";
+        (int left, int top) = Console.GetCursorPosition();      
+        while (!hasToEnd)
+        {
+            Console.SetCursorPosition(left - 5, top);
+            foreach (char c in functionInput) 
+                {
+                    StringEater beep = new StringEater(c.ToString(), charDelay, true);
+                    if (Console.KeyAvailable)
+                    {
+                        ConsoleKeyInfo key = Console.ReadKey(intercept: true);                        
+                        switch (key.Key)
+                        {
+                            case ConsoleKey.D0:
+                                keyPress = "0";
+                                break;
+                            case ConsoleKey.D1:
+                                keyPress = "1";
+                                break;
+                            case ConsoleKey.D2:
+                                keyPress = "2";
+                                break;
+                            case ConsoleKey.D3:
+                                keyPress = "3";
+                                break;
+                            default: 
+                                continue;
+                        }
+                    }
+                }
+                if (keyPress == "0" || keyPress == "1" || keyPress == "2" || keyPress == "3"  ) {hasToEnd = true; break;}
+            if (hasToEnd) {break;}
+        }
+        Console.ForegroundColor = ConsoleColor.White;
+        return keyPress;
     }
     private void StandardDisplay()
     {
@@ -83,7 +136,6 @@ public class StringEater
                 if (_randoColorChar == true) 
                 {
                     Console.ForegroundColor = Randomizer.RandomConsoleColor();
-                    //Console.BackgroundColor = Randomizer.RandomConsoleColor();
                 }
                 Thread.Sleep(_digestiveDelay);
                 for (int i = 0; i < _hMoveUnits; i++) {Console.Write(" "); }
@@ -117,7 +169,6 @@ public class StringEater
                 if (_randoColorChar == true) 
                 {
                     Console.ForegroundColor = Randomizer.RandomConsoleColor();
-                    //Console.BackgroundColor = Randomizer.RandomConsoleColor(); 
                 }
                 Thread.Sleep(_digestiveDelay);
                 Console.Clear();
