@@ -1,5 +1,8 @@
 using System;
 using System.ComponentModel.Design;
+using System.Drawing;
+using System.Text;
+
 
 class Program
 {

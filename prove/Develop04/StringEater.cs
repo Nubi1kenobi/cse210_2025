@@ -1,3 +1,6 @@
+using System;
+using System.Drawing;
+using System.Text;
 public class StringEater
 {
     private string _eatenString;
@@ -85,48 +88,41 @@ public class StringEater
         }
         Console.ForegroundColor = ConsoleColor.White;
     }
-     public string MenuVibrance(string chewedUpString, int charDelay, int curserPos)
+
+    public string MenuVibrance(string chewedUpString, int charDelay, int curserPos)
     {
         Console.CursorVisible = false;
         string functionInput = chewedUpString;
         bool hasToEnd = false;
         int lineBuffer = functionInput.Length;
-        string keyPress = "5";
+        string keyPressed = "5";
         (int left, int top) = Console.GetCursorPosition();      
         while (!hasToEnd)
         {
             Console.SetCursorPosition(left - 5, top);
+
             foreach (char c in functionInput) 
+            {
+                StringEater beep = new StringEater(c.ToString(), charDelay, true);
+
+                if (Console.KeyAvailable)
                 {
-                    StringEater beep = new StringEater(c.ToString(), charDelay, true);
-                    if (Console.KeyAvailable)
+                    ConsoleKeyInfo key = Console.ReadKey(intercept: true); 
+                    keyPressed = key.KeyChar.ToString();
+                    if ("0123".Contains(keyPressed)) //if any if the characters in the string are in keyPressed, will break the loop.
                     {
-                        ConsoleKeyInfo key = Console.ReadKey(intercept: true);                        
-                        switch (key.Key)
-                        {
-                            case ConsoleKey.D0:
-                                keyPress = "0";
-                                break;
-                            case ConsoleKey.D1:
-                                keyPress = "1";
-                                break;
-                            case ConsoleKey.D2:
-                                keyPress = "2";
-                                break;
-                            case ConsoleKey.D3:
-                                keyPress = "3";
-                                break;
-                            default: 
-                                continue;
-                        }
+                        hasToEnd = true;
+                        break;
                     }
                 }
-                if (keyPress == "0" || keyPress == "1" || keyPress == "2" || keyPress == "3"  ) {hasToEnd = true; break;}
-            if (hasToEnd) {break;}
+            }
+
+            if (hasToEnd) break;
         }
-        Console.ForegroundColor = ConsoleColor.White;
-        return keyPress;
+        return keyPressed;
     }
+
+    
     private void StandardDisplay()
     {
         if (_hMove == true && _vMove != true) {

@@ -1,4 +1,5 @@
 using System;
+using System.Drawing;
 public class Activity
 {
     protected string _activity = "Base";
@@ -12,9 +13,9 @@ public class Activity
     protected void WelcomeMsg()
     {
         StringEater welcomeMessage = new StringEater($"Welcome to the {_activity} Activity\n", _textDelay, true);
-        Thread.Sleep(1500);
+        Thread.Sleep(_messageDelay);
         StringEater activityDesctription = new StringEater($"{_activityDescription}\n\n", _textDelay, true);
-        Thread.Sleep(1500);
+        Thread.Sleep(_messageDelay);
         StringEater howLong = new StringEater($"{_howLong} ", _textDelay, true);
         _userPrompt = Console.ReadLine();
     }

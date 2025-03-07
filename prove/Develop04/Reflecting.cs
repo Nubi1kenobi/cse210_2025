@@ -1,4 +1,7 @@
 using System;
+using System.Drawing;
+using System.Text;
+using System.Reflection.Metadata;
 public class Reflecting : Activity 
 {
    public Reflecting() : base()
@@ -10,9 +13,53 @@ public class Reflecting : Activity
     }   
     public void RunReflecting() 
     {
+        List<string> thinkOfATime = new List<string> 
+        {
+            "Think of a time when you stood up for someone else.", 
+            "Think of a time when you did something really difficult.", 
+            "Think of a time when you helped someone in need.", 
+            "Think of a time when you did something truly selfless."
+        };
+        List<String> questions = new List<string>
+        {
+            "Why was this experience meaningful to you?", 
+            "Have you ever done anything like this before?", 
+            "How did you get started?", "How did you feel when it was complete?", 
+            "What made this time different than other times when you were not as successful?", 
+            "What is your favorite thing about this experience?", "What could you learn from this experience that applies to other situations?", 
+            "What did you learn about yourself through this experience?", "How can you keep this experience in mind in the future?"
+        };
+        List<string> userResponseList = new List<string>{};
+        CountTo10 countDown = new CountTo10();
+        
+        int random1 = Randomizer.RandomInt((thinkOfATime.Count()-1));
         Console.Clear();
-        StringEater reflectingActivity = new StringEater("Commence your Reflecting!\n", 15, true);
         Thread.Sleep(_messageDelay);
-        //We must always remember to take a pause and reflect on our blessings every day.
+        StringEater thinkOfATimePrompt = new StringEater($" ==> {thinkOfATime[random1]} <== \n\n When you have something in mind...\n\n",_textDelay,true); 
+        Utility.PressAnyKey();
+        StringEater reflectingActivity = new StringEater("Prepare Yourself to Reflect!\n\n", 15, true);
+        countDown.CountDown(0, 3);
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(int.Parse(_userPrompt));
+        string graphic = "(╯°□°）╯︵ ┻━┻";
+        string graphic1 = "┏━┓ ︵ /(^.^/)";
+        string graphic2= "(╭ರ_•́)";
+        while (DateTime.Now < endTime)
+        {
+            int random2 = Randomizer.RandomInt(questions.Count()-1);
+            StringEater questionsAsking = new StringEater($"{questions[random2]}", 0, true);
+            StringEater animation = new StringEater(graphic,15, true);
+            StringEater animation1 = new StringEater(graphic1,15, true);
+            StringEater animation2 = new StringEater($"{graphic2}\n",15, true);
+            Thread.Sleep(1500);
+            Console.Write("\n");
+            
+        }
+
+        Console.Clear();
+        StringEater concludeActivity = new StringEater($"Fantastico!\n\nThis concludes our activity, you have completed {_userPrompt} seconds of the {_activity} Activity.\n",_textDelay,true);
+        Thread.Sleep(_messageDelay);
+        StringEater concludeActivity1 = new StringEater("We must always remember to take a pause and reflect on our blessings every day.\n",_textDelay,true);
+        Utility.PressAnyKey();
     }  
 }
