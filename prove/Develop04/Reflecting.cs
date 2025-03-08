@@ -1,6 +1,4 @@
 using System;
-using System.Drawing;
-using System.Text;
 using System.Reflection.Metadata;
 public class Reflecting : Activity 
 {
@@ -13,6 +11,7 @@ public class Reflecting : Activity
     }   
     public void RunReflecting() 
     {
+    
         List<string> thinkOfATime = new List<string> 
         {
             "Think of a time when you stood up for someone else.", 
@@ -31,29 +30,22 @@ public class Reflecting : Activity
         };
         List<string> userResponseList = new List<string>{};
         CountTo10 countDown = new CountTo10();
-        
-        int random1 = Randomizer.RandomInt((thinkOfATime.Count()-1));
+        int random1 = Randomizer.RandomInt((thinkOfATime.Count()));
         Console.Clear();
-        Thread.Sleep(_messageDelay);
         StringEater thinkOfATimePrompt = new StringEater($" ==> {thinkOfATime[random1]} <== \n\n When you have something in mind...\n\n",_textDelay,true); 
         Utility.PressAnyKey();
-        StringEater reflectingActivity = new StringEater("Prepare Yourself to Reflect!\n\n", 15, true);
-        countDown.CountDown(0, 3);
+        Console.Clear();
+        StringEater reflectingActivity = new StringEater("Prepare Yourself to Reflect! ==> ", 15, true);
+        countDown.CountDownInPlace(0, 3);
+        Console.Clear();
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(int.Parse(_userPrompt));
-        string graphic = "(╯°□°）╯︵ ┻━┻";
-        string graphic1 = "┏━┓ ︵ /(^.^/)";
-        string graphic2= "(╭ರ_•́)";
         while (DateTime.Now < endTime)
         {
             int random2 = Randomizer.RandomInt(questions.Count()-1);
-            StringEater questionsAsking = new StringEater($"{questions[random2]}", 0, true);
-            StringEater animation = new StringEater(graphic,15, true);
-            StringEater animation1 = new StringEater(graphic1,15, true);
-            StringEater animation2 = new StringEater($"{graphic2}\n",15, true);
-            Thread.Sleep(1500);
+            StringEater questionsAsking = new StringEater($"{questions[random2]} ==> ", 0, true);
+            countDown.CountDownInPlace(0,10);
             Console.Write("\n");
-            
         }
 
         Console.Clear();

@@ -48,6 +48,24 @@ class CountTo10
         }
         
     }
+        public void CountDownInPlace(int low, int high)
+    {
+        if (low < 1) {_low = 1;}
+        if (high > 10) {_high = 10;} 
+        RandomLangCase(RandomizeLaguages()); 
+        {
+            for (int i = high; i > low; i--) 
+            {
+                //StringEater mySacrafice2 = new StringEater($"({i}.) {_randomLanguageList[i-1]} ", 0, true); 
+                StringEater mySacrafice2 = new StringEater($"{_randomLanguageList[i-1]} ", 0, true); 
+                Thread.Sleep(1000);
+                foreach (char c in _randomLanguageList[i-1]){Console.Write("\b");}
+                Console.Write("\b");
+                foreach (char c in _randomLanguageList[i-1]) {Console.Write(" ");}
+                foreach (char c in _randomLanguageList[i-1]){Console.Write("\b");}
+            }
+        }
+    }
     private int RandomizeLaguages() {return Randomizer.RandomInt(10);}
     private void RandomLangCase(int parameter)
     {
