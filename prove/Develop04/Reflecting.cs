@@ -28,7 +28,6 @@ public class Reflecting : Activity
             "What is your favorite thing about this experience?", "What could you learn from this experience that applies to other situations?", 
             "What did you learn about yourself through this experience?", "How can you keep this experience in mind in the future?"
         };
-        List<string> userResponseList = new List<string>{};
         CountTo10 countDown = new CountTo10();
         int random1 = Randomizer.RandomInt((thinkOfATime.Count()));
         Console.Clear();
@@ -45,7 +44,7 @@ public class Reflecting : Activity
             int random2 = Randomizer.RandomInt(questions.Count()-1);
             StringEater questionsAsking = new StringEater($"{questions[random2]} ==> ", 0, true);
             countDown.CountDownInPlace(0,10);
-            Console.Write("\n");
+            Console.Clear();
         }
 
         Console.Clear();

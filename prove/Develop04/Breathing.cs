@@ -26,17 +26,21 @@ public class Breathing : Activity
         Console.Clear();
         StringEater introActivity = new StringEater("Please start by emptying your lungs of air.\n\n",0,true);
         introActivity.Vibrance("<Press Any Key to Begin>", 10, 0);
+        Console.Clear();
         for (int i = 1; i < limit + 1; i++)
         {  
-            StringEater x478 = new StringEater("Breath in thorugh your nose for 4 seconds.\n",0,true);
+            StringEater x478 = new StringEater("Breath in thorugh your nose for 4 seconds ==> ",0,true);
             CountTo10 uno = new CountTo10();
-            uno.CountDown(0, 4);
-            StringEater y478 = new StringEater("Hold your breath for 7 seconds.\n",0,true);
+            uno.CountDownInPlace(0, 4);
+            Console.Clear();
+            StringEater y478 = new StringEater("Hold your breath for 7 seconds ==> ",0,true);
             CountTo10 dos = new CountTo10();
-            dos.CountDown(0, 7);
-            StringEater z478 = new StringEater("Exhail forcefully for 8 seconds, you might make a 'whoosh' sound.\n",0,true);
+            dos.CountDownInPlace(0, 7);
+            Console.Clear();
+            StringEater z478 = new StringEater("Exhail forcefully for 8 seconds, you might make a 'whoosh' sound ==> ",0,true);
             CountTo10 tres = new CountTo10();
-            tres.CountDown(0, 8);
+            tres.CountDownInPlace(0, 8);
+            Console.Write("\n");
             Console.Clear();
         }
         Console.Clear();
