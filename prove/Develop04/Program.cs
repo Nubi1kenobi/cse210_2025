@@ -48,8 +48,7 @@ class Program
                 return;                                
             
             case "0":
-                Playground endItAll = new Playground();
-                endItAll.Quit();
+                Playground.Quit();
                 
                 return;
             default:
