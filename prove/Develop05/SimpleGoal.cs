@@ -1,11 +1,12 @@
 using System;
+using System.Runtime.InteropServices.Marshalling;
 
 public class SimpleGoal 
 {
     protected string _goalType = "SimpleGoal";
-    private string _goal = "";
-    private int _value;
-    private bool _complete;
+    protected string _goal = "";
+    protected int _value;
+    protected bool _complete;
 
     public SimpleGoal(string goal, int value, bool complete)
     {
@@ -21,5 +22,31 @@ public class SimpleGoal
     public void SetValue(int value){_value = value;}
     public void SetComplete(){_complete = true;}
 
-
+    public virtual string Serialize() 
+    {
+        return $"{_goalType}|{_goal}|{_complete}|{_value}";
+    }
+    public virtual void Deserialize(string oneOfMyGoals)
+    {
+        string[] segment = oneOfMyGoals.Split("-|-");
+        string type = "";
+        string value = "";
+        string complete = "";
+        string goal = "";
+        if (segment[0] == "SimpleGoal")
+        {
+            if (oneOfMyGoals.Length < 4)
+                {
+                    Console.WriteLine("ERROR - Missing line segments, for a SimpleGoal.");
+                }
+            else
+                {
+                    type = segment[0];
+                    value = segment[1];    
+                    complete = segment[2];
+                    goal = segment[3];
+                }
+            return "123";
+        }
+    }
 }
