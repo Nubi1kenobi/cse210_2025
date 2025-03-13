@@ -8,6 +8,7 @@ public class SimpleGoal
     protected int _value;
     protected bool _complete;
 
+    public SimpleGoal() {}
     public SimpleGoal(string goal, int value, bool complete)
     {
         _goal = goal;
@@ -24,29 +25,27 @@ public class SimpleGoal
 
     public virtual string Serialize() 
     {
-        return $"{_goalType}|{_goal}|{_complete}|{_value}";
+        return $"{GetGoalType()}-|-{GetGoal()}-|-{GetValue()}-|-{GetComplete()}";
     }
     public virtual void Deserialize(string oneOfMyGoals)
     {
         string[] segment = oneOfMyGoals.Split("-|-");
-        string type = "";
-        string value = "";
-        string complete = "";
-        string goal = "";
-        if (segment[0] == "SimpleGoal")
-        {
-            if (oneOfMyGoals.Length < 4)
-                {
-                    Console.WriteLine("ERROR - Missing line segments, for a SimpleGoal.");
-                }
-            else
-                {
-                    type = segment[0];
-                    value = segment[1];    
-                    complete = segment[2];
-                    goal = segment[3];
-                }
-            return "123";
-        }
+        if (oneOfMyGoals.Length < 4)
+            {
+                Console.WriteLine("ERROR - Missing line segments, for a SimpleGoal.");
+            }
+        else
+            {
+                _goalType = segment[0];
+                _goal = segment[1];
+                _value = Convert.ToInt16(segment[2]);
+                _complete = Convert.ToBoolean(segment[3]);
+                Console.WriteLine($"Debugging SimpleGoal.Deserialize: {segment[0]}, {segment[1]}, {segment[2]}, {segment[3]}.");
+                Console.WriteLine($"Debugging SimpleGoal.Deserialize: {_goalType}, {_goal}, {_value}, {_complete}.");
+            }
+    }
+    public virtual void DisplayGoal()
+    {
+        Console.WriteLine($"{GetGoalType()}: {GetGoal()} | Value [{GetValue()}] | Complete? [{GetComplete()}]");
     }
 }

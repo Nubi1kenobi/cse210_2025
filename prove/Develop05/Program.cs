@@ -6,8 +6,13 @@ class Program
     
     static void Main(string[] args)
     {
+        Console.Clear();
         Console.WriteLine("Hello Develop05 World!");
-        List<String> allGoals = new List<String>{};
+        Console.WriteLine("Creating a Serialized List, Creating Goals, Serializing Them, Incrementing Some of Them, Adding them to the List");
+        Console.Write("\n<Press any key to continue>\n");
+        Console.ReadKey();
+
+        List<String> serializedGoals = new List<String>{};
         SimpleGoal newGoal = new SimpleGoal("Goal0", 5, false);
         SimpleGoal newGoal1 = new SimpleGoal("Goal1", 15, false);
         SimpleGoal newGoal2 = new SimpleGoal("Goal2", 25, false);
@@ -32,29 +37,66 @@ class Program
         newGoal8.Increment();
         newGoal8.Increment();
 
-        allGoals.Add(newGoal.Serialize());
-        allGoals.Add(newGoal1.Serialize());
-        allGoals.Add(newGoal2.Serialize());
-        allGoals.Add(newGoal3.Serialize());
-        allGoals.Add(newGoal4.Serialize());
-        allGoals.Add(newGoal5.Serialize());
-        allGoals.Add(newGoal6.Serialize());
-        allGoals.Add(newGoal7.Serialize());
-        allGoals.Add(newGoal8.Serialize());
+        serializedGoals.Add(newGoal.Serialize());
+        serializedGoals.Add(newGoal1.Serialize());
+        serializedGoals.Add(newGoal2.Serialize());
+        serializedGoals.Add(newGoal3.Serialize());
+        serializedGoals.Add(newGoal4.Serialize());
+        serializedGoals.Add(newGoal5.Serialize());
+        serializedGoals.Add(newGoal6.Serialize());
+        serializedGoals.Add(newGoal7.Serialize());
+        serializedGoals.Add(newGoal8.Serialize());
+
+        Console.WriteLine("Displaying the Serialized List");     
+        Console.Write("\n<Press any key to continue>\n");
         
-        Console.WriteLine("Serializing Data");
-        foreach (string goals in allGoals)
+        foreach (string goals in serializedGoals)
         {
             Console.WriteLine(goals);
         }
-        Console.Write("\n");
+        
+        Console.Write("\n<Press any key to continue>\n");
+        Console.ReadKey();
+        Console.Clear();
+        
+        Console.WriteLine("De-serializing the Serialized List and Creating a New SimpleGoalList form the Deserialized Data");
 
         List<SimpleGoal> DeSerializedList = new List<SimpleGoal>();
-
-        foreach (string serializedGoal in allGoals)
+        foreach (string serializedGoal in serializedGoals)
         {
-            
-        }
+            string[] segment = serializedGoal.Split("-|-");
+            Console.WriteLine($"Debugging Main, Splitting Serialized Line, Checking It, Then Deserializing: {segment[0]}");
+            if (segment[0] == "SimpleGoal")
+            {
+                SimpleGoal deSerializedGoal = new SimpleGoal(); 
+                deSerializedGoal.Deserialize(serializedGoal);
+                DeSerializedList.Add(deSerializedGoal);
+            }
+            if (segment[0] == "EternalGoal")
+            {
+                EternalGoal deSerializedGoal = new EternalGoal(); 
+                deSerializedGoal.Deserialize(serializedGoal);
+                DeSerializedList.Add(deSerializedGoal);
+            }
+            if (segment[0] == "ChecklistGoal")
+            {
+                ChecklistGoal deSerializedGoal = new ChecklistGoal(); 
+                deSerializedGoal.Deserialize(serializedGoal);
+                DeSerializedList.Add(deSerializedGoal);
+            }           
+        }  
+        Console.Write("\n<Press any key to continue>\n");
+        Console.ReadKey();
+        Console.Clear();
+
+
+        Console.WriteLine("Displaying the De-serialized Data");     
+        foreach (SimpleGoal goal in DeSerializedList){goal.DisplayGoal();}
+
+        Console.WriteLine("The End");     
+        Console.Write("\n<Press any key to continue>\n");
+        Console.ReadKey();
+        Console.Clear();
 
         //string _fileName = Console.ReadLine() + ".txt";
         

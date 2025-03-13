@@ -1,47 +1,41 @@
 using System;
-
 public class EternalGoal : SimpleGoal
 {
-    bool _permanentFlag = true;
     private int _timesCompleted = 0;
+    public EternalGoal() : base() {}
     public EternalGoal(string goal, int value, bool complete) : base(goal, value, complete)
     {
         SetGoalType();
     }
     public void SetGoalType(){_goalType = "EternalGoal";}
     public void Increment(){_timesCompleted++;}
-    public bool GetPermanantFlag(){return _permanentFlag;}
     public int GetTimesCompleted(){return _timesCompleted;}
 
-        public override string Serialize() 
+    public override string Serialize() 
     {
-        return $"{_goalType}|{_goal}|{_complete}|{_value}";
-        return $"{GetGoalType()}|{GetValue()}|{GetComplete()}|{GetTimesCompleted()}|{GetPermanantFlag()}|{GetGoal()}";
+        return $"{GetGoalType()}-|-{GetGoal()}-|-{GetValue()}-|-{GetTimesCompleted()}";
     }
     public override void Deserialize(string oneOfMyGoals)
     {
-        string[] segment = oneOfMyGoals.Split("-|-");
-        string type = "";
-        string value = "";
-        string complete = "";
-        string goal = "";
-        string timesCompleted = "";
-        string permanentFlag = "";
-        if (oneOfMyGoals.Length < 6)
+        string[] segment = oneOfMyGoals.Split("-|-");       
+        if (oneOfMyGoals.Length < 4)
             {
                 Console.WriteLine("ERROR - Missing line segments, in EternalGoal.Deserialize.");
             }
         else
-            {
-                type = segment[0];
-                value = segment[1];    
-                complete = segment[2];
-                timesCompleted = segment[3];
-                permanentFlag = segment[4];
-                goal = segment[5];
+            {   
+                _goalType = segment[0];
+                _goal = segment[1];
+                _value = Convert.ToInt16(segment[2]);   
+                _timesCompleted = Convert.ToInt16(segment[3]);             
+                Console.WriteLine($"Debugging EternealGoal.Deserialize: {segment[0]}, {segment[1]}, {segment[2]}, {segment[3]}.");
+                Console.WriteLine($"Debugging EternealGoal.Deserialize: {_goalType}, {_goal}, {_value}, {_timesCompleted}.");
             }
     }
-
+    public override void DisplayGoal()
+    {
+        Console.WriteLine($"{GetGoalType()}: {GetGoal()} | Value [{GetValue()}] | Complete? [N/A] | Times Completed [{GetTimesCompleted()}]");
+    }
     
 
 
