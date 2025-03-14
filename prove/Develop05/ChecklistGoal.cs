@@ -47,14 +47,24 @@ public class ChecklistGoal : SimpleGoal
                 _timesToComplete = Convert.ToInt16(segment[3]);
                 _timesCompleted = Convert.ToInt16(segment[4]);
                 _complete = Convert.ToBoolean(segment[5]);
-                _bonusValue = Convert.ToInt16(segment[6]);
-                Console.WriteLine($"Debugging EternealGoal.Deserialize: {segment[0]}, {segment[1]}, {segment[2]}, {segment[3]}, {segment[4]}, {segment[5]}, {segment[6]}.");
-                Console.WriteLine($"Debugging EternealGoal.Deserialize: {_goalType}, {_goal}, {_value}, {_complete}, {_timesCompleted}, {_timesToComplete}, {_bonusValue}.");
-                
+                _bonusValue = Convert.ToInt16(segment[6]);                
             }
     }
         public override void DisplayGoal()
     {
         Console.WriteLine($"{GetGoalType()}: {GetGoal()} | Value [{GetValue()}] | Complete? [{GetComplete()}] | Times Completed [{GetTimesCompleted()}]/[{GetTimesToComplete()}] | Bonus [{GetBonus()}]");
     }
+    public static string NewChecklistGoal() 
+    {
+        Console.Write("What is your goal?\n ==> ");
+        string newGoalDesc = Console.ReadLine();
+        Console.Write("What is your goal's value? ==> ");
+        int  newGoalValue = int.Parse(Console.ReadLine());
+        Console.Write("How many times to complete this goal to get the bonus? ==> ");
+        int  timesToComplete = int.Parse(Console.ReadLine());
+        Console.Write("What is your goal's bonus value? ==> ");
+        int  bonus = int.Parse(Console.ReadLine());
+        return $"{newGoalDesc}-|-{newGoalValue}-|-{bonus}-|-{timesToComplete}";
+    }
+// public ChecklistGoal(string goal, int value, bool complete, int bonusValue, int timesToComplete) : base(goal, value, complete)
 }

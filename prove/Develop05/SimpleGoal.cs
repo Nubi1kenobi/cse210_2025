@@ -40,12 +40,21 @@ public class SimpleGoal
                 _goal = segment[1];
                 _value = Convert.ToInt16(segment[2]);
                 _complete = Convert.ToBoolean(segment[3]);
-                Console.WriteLine($"Debugging SimpleGoal.Deserialize: {segment[0]}, {segment[1]}, {segment[2]}, {segment[3]}.");
-                Console.WriteLine($"Debugging SimpleGoal.Deserialize: {_goalType}, {_goal}, {_value}, {_complete}.");
             }
     }
     public virtual void DisplayGoal()
     {
         Console.WriteLine($"{GetGoalType()}: {GetGoal()} | Value [{GetValue()}] | Complete? [{GetComplete()}]");
     }
+
+    public static string NewSimpleGoal() 
+    {
+        Console.Write("What is your goal?\n ==> ");
+        string newGoalDesc = Console.ReadLine();
+        Console.Write("What is your goal's value? ==> ");
+        int  newGoalValue = int.Parse(Console.ReadLine());
+        
+        return $"{newGoalDesc}-|-{newGoalValue}";
+    }
+    
 }

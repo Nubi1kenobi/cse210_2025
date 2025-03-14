@@ -28,8 +28,6 @@ public class EternalGoal : SimpleGoal
                 _goal = segment[1];
                 _value = Convert.ToInt16(segment[2]);   
                 _timesCompleted = Convert.ToInt16(segment[3]);             
-                Console.WriteLine($"Debugging EternealGoal.Deserialize: {segment[0]}, {segment[1]}, {segment[2]}, {segment[3]}.");
-                Console.WriteLine($"Debugging EternealGoal.Deserialize: {_goalType}, {_goal}, {_value}, {_timesCompleted}.");
             }
     }
     public override void DisplayGoal()
@@ -37,6 +35,14 @@ public class EternalGoal : SimpleGoal
         Console.WriteLine($"{GetGoalType()}: {GetGoal()} | Value [{GetValue()}] | Complete? [N/A] | Times Completed [{GetTimesCompleted()}]");
     }
     
+    public static string NewEternalGoal() 
+    {
+        Console.Write("What is your goal?\n ==> ");
+        string newGoalDesc = Console.ReadLine();
+        Console.Write("What is your goal's value? ==> ");
+        int  newGoalValue = int.Parse(Console.ReadLine());
+        return $"{newGoalDesc}-|-{newGoalValue}";
+    }
 
 
 
