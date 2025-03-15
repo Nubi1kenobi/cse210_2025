@@ -15,7 +15,7 @@ class Person
 
     public Person() 
     {
-        
+        bool looptyLoop = true;
         Console.Clear();
         string introMessage = "Welcome to your Eternal Quest!\n\nPlease follow the next couple of prompts;\nthis determines how everything is saved.\n\n";
         StringEater intoMessageBling = new StringEater(introMessage, _menuDelay ,true);
@@ -29,6 +29,7 @@ class Person
         _fileName = _fileName.Trim().ToLower();
         if (File.Exists(_fileName)) 
         {
+            Console.Clear();
             StringEater intoMessageBling4 = new StringEater($"\nYour filename ", _menuDelay,true);
             StringEater intoMessageBling5 = new StringEater($"{_fileName} ", _menuDelay,false);
             StringEater intoMessageBling6 = new StringEater($"has been found.", _menuDelay,true);
@@ -38,6 +39,7 @@ class Person
         } 
         else 
         {
+            Console.Clear();
             StringEater intoMessageBling4 = new StringEater($"\nYour filename ", _menuDelay,true);
             StringEater intoMessageBling5 = new StringEater($"{_fileName} ", _menuDelay,false);
             StringEater intoMessageBling6 = new StringEater($"was not been found.\n\n", _menuDelay,true);
@@ -52,23 +54,20 @@ class Person
                 Console.Clear();
             }
             SaveMyFile();
-        }
-        bool looptyLoop = true;
-        do
-        {
-            Console.Clear();
+        } 
+       do
+       {
+            
             string mainMenuMessage = "Your Eternal Quest begins now!";
+            Console.Clear();
             StringEater menuMessage = new StringEater($"{mainMenuMessage}\n", _menuDelay ,true);
             Menu mainMenu = new Menu(_score, "Add a New Goal","Record Event","Display Current Goals","Display Completed Goals");
-            Console.ForegroundColor = ConsoleColor.White;
-            //MainMenuSelector();
-            StringEater pleaseMakeASelection = new StringEater();
-            pleaseMakeASelection.Vibrance(" <== Please Make a Selection ==> ",25,0);
+            _mainMenuSelector = menuMessage.MenuVibrance(" <== Please Make a Selection ==> ", 10, 0); //(string, character delay, charactor position resets to...)
             MainMenuOptions(_mainMenuSelector, _menuDelay);
                 if (_mainMenuSelector == "0") {looptyLoop = false;}
-        //DisplayMyGoals();
-        //DisplayMyCompletedGoals();
-        } while (looptyLoop);
+       } while (looptyLoop);
+
+
     }
     private void AddGoal() //Temporary Class
     {
@@ -196,8 +195,8 @@ class Person
         StringEater addGoalMenuMessage1 = new StringEater($"{addGoalMenuMessage}\n", menuDelay ,true);
         Menu goalMenu = new Menu("Simple Goal", "EternalGoal Goal", "Checklist Goal", "Return to the Main Menu" );
         Console.ForegroundColor = ConsoleColor.White;
-        StringEater pleaseMakeASelection = new StringEater();
-        pleaseMakeASelection.Vibrance(" <== Please Make a Selection ==> ",25,0);
+        //StringEater pleaseMakeASelection = new StringEater();
+        //pleaseMakeASelection.Vibrance(" <== Please Make a Selection ==> ",25,0);
         if (selector == "0") {looptyLoop = false;}
         AddGoalsMenuOptions(selector, menuDelay);
         while (looptyLoop);

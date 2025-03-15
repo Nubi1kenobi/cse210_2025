@@ -1,4 +1,0 @@
-
-SimpleGoal-|-Complete my Week 10 Polymorphism Assignment-|-Finish Assignment-|-1000-|-False
-EternalGoal-|-Daily Prayer-|-Pray every morning, evening, and before each meal.-|-500-|-0
-ChecklistGoal-|-Complete the class, get the credit.-|-Finish the remaining 50 credits.-|-500-|-0-|-5000-|-False-|-500

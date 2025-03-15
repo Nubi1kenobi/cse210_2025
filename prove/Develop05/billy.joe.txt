@@ -1,4 +1,0 @@
-
-SimpleGoal-|-Getting it done.-|-Finishing this block-|-100-|-False
-EternalGoal-|-Daily Prayer-|-Pray everyday.-|-500-|-0
-ChecklistGoal-|-Earn credits-|-earning credits-|-500-|-0-|-300-|-False-|-500

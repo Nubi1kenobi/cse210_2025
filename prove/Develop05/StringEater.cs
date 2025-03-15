@@ -99,7 +99,7 @@ public class StringEater
         (int left, int top) = Console.GetCursorPosition();      
         while (!hasToEnd)
         {
-            Console.SetCursorPosition(left - 5, top);
+            Console.SetCursorPosition(left, top);
 
             foreach (char c in functionInput) 
             {
