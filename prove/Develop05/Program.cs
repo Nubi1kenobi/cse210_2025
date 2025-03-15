@@ -9,10 +9,5 @@ class Program
         Console.Clear();
         Console.WriteLine("Hello Develop05 World!");
         Person thisPerson = new Person();
-
-        
-
-
-
     } 
 }

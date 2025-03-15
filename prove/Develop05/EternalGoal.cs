@@ -11,7 +11,6 @@ public class EternalGoal : SimpleGoal
     public void SetGoalType(){_goalType = "EternalGoal";}
     public void Increment(){_timesCompleted++;}
     public int GetTimesCompleted(){return _timesCompleted;}
-
     public override string Serialize() 
     {
         return $"{GetGoalType()}-|-{GetGoal()}-|-{GetGoalDesc()}-|-{GetValue()}-|-{GetTimesCompleted()}";
@@ -35,8 +34,7 @@ public class EternalGoal : SimpleGoal
     public override void DisplayGoal()
     {
         Console.WriteLine($"{GetGoalType()}: {GetGoal()} | Value [{GetValue()}] | Times Completed [{GetTimesCompleted()}]\nGoal Description: {_goalDesc}\n ");
-    }
-    
+    }  
     public static string NewEternalGoal() 
     {
         StringEater eternalGoal0 = new StringEater("What is your new Eternal Goal?\n ==> ", 10, true);
@@ -47,7 +45,4 @@ public class EternalGoal : SimpleGoal
         int  newGoalValue = int.Parse(Console.ReadLine());
         return $"{newGoalA}-|-{newGoalDesc}-|-{newGoalValue}";
     }
-
-
-
 }

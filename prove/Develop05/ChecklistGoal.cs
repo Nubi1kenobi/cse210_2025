@@ -1,8 +1,7 @@
 using System;
 using System.Reflection.Metadata.Ecma335;
 public class ChecklistGoal : SimpleGoal
-{
-    
+{   
     private int _timesToComplete = 0;
     private int _timesCompleted = 0;
     private int _bonusValue = 0;
@@ -12,7 +11,6 @@ public class ChecklistGoal : SimpleGoal
         SetGoalType();
         _bonusValue = bonusValue;
         _timesToComplete = timesToComplete;
-
     }
     public void SetGoalType(){_goalType = "ChecklistGoal";}
     public void Increment(){_timesCompleted++; BonusChecker();}
@@ -30,8 +28,6 @@ public class ChecklistGoal : SimpleGoal
     {
         return $"{GetGoalType()}-|-{GetGoal()}-|-{GetGoalDesc()}-|-{GetValue()}-|-{GetTimesCompleted()}-|-{GetTimesToComplete()}-|-{GetComplete()}-|-{GetBonus()}";
     }
-
-
     public override void Deserialize(string oneOfMyGoals)
     {
         string[] segment = oneOfMyGoals.Split("-|-");
@@ -57,7 +53,7 @@ public class ChecklistGoal : SimpleGoal
     }
     public static string NewChecklistGoal() 
     {
-       StringEater checklistGoal0 = new StringEater("What is your new Checklist Goal?\n ==> ", 10, true);
+        StringEater checklistGoal0 = new StringEater("What is your new Checklist Goal?\n ==> ", 10, true);
         string newGoalA = Console.ReadLine();
         StringEater checklistGoal1 = new StringEater("Describe your goal?\n ==> ", 10, true);
         string newGoalDesc = Console.ReadLine();
@@ -69,5 +65,4 @@ public class ChecklistGoal : SimpleGoal
         int  bonus = int.Parse(Console.ReadLine());
         return $"{newGoalA}-|-{newGoalDesc}-|-{newGoalValue}-|-{bonus}-|-{timesToComplete}";
     }
-// public ChecklistGoal(string goal, int value, bool complete, int bonusValue, int timesToComplete) : base(goal, value, complete)
 }

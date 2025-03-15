@@ -1,6 +1,5 @@
 using System;
 using System.Runtime.InteropServices.Marshalling;
-
 public class SimpleGoal 
 {
     protected string _goalType = "SimpleGoal";
@@ -9,7 +8,6 @@ public class SimpleGoal
     bool _permanentFlag = false;
     protected int _value;
     protected bool _complete;
-
     public SimpleGoal() {}
     public SimpleGoal(string goal, string goalDesc, int value, bool complete)
     {
@@ -18,7 +16,6 @@ public class SimpleGoal
         _value = value;
         _complete = complete;
     }
-
     public string GetGoalType(){return _goalType;}
     public string GetGoal(){return _goal;}
     public string GetGoalDesc(){return _goalDesc;}
@@ -28,7 +25,6 @@ public class SimpleGoal
     public void SetValue(int value){_value = value;}
     public void SetComplete(){_complete = true;}
     public void SetPermFlag(){_permanentFlag = true;}
-
     public virtual string Serialize() 
     {
         return $"{GetGoalType()}-|-{GetGoalDesc()}-|-{GetGoal()}-|-{GetValue()}-|-{GetComplete()}";
@@ -62,7 +58,6 @@ public class SimpleGoal
         string newGoalDesc = Console.ReadLine();
         StringEater simpleGoal2 = new StringEater("What is your goal's value? ", 10, true);
         int  newGoalValue = int.Parse(Console.ReadLine());
-        
         return $"{newGoalA}-|-{newGoalDesc}-|-{newGoalValue}";
     }
     

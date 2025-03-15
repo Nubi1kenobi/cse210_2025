@@ -10,10 +10,7 @@ public class StringEater
     private bool _vMove = false;
     private int _hMoveUnits = 0;
     private int _vMoveUnits = 0;
-
-    public StringEater()
-    {
-    } 
+    public StringEater(){} 
     public StringEater(string eatenString)
     {
         _eatenString = eatenString;
@@ -27,16 +24,14 @@ public class StringEater
         _digestiveDelay = 0;
         StandardDisplay();
     } 
-
-        public StringEater(string eatenString, int digestiveDelay, bool randoColorChar)
+    public StringEater(string eatenString, int digestiveDelay, bool randoColorChar)
     {
         _eatenString = eatenString;
         _digestiveDelay = digestiveDelay;
         _randoColorChar = randoColorChar;
         StandardDisplay();
     }  
-
-        public StringEater(string eatenString, int digestiveDelay, bool horizontalMovement,int horizontalMoveUnits, bool verticalMovement, int verticalMoveUnits, bool randoColorChar)
+    public StringEater(string eatenString, int digestiveDelay, bool horizontalMovement,int horizontalMoveUnits, bool verticalMovement, int verticalMoveUnits, bool randoColorChar)
     {
         _eatenString = eatenString;
         _digestiveDelay = digestiveDelay;
@@ -47,7 +42,6 @@ public class StringEater
         _randoColorChar = randoColorChar;
         StandardDisplay();
     }  
-    
     public void Vibrance(string chewedUpString, int charDelay, int curserPos)
     {
         Console.CursorVisible = false;
@@ -81,14 +75,12 @@ public class StringEater
             foreach (char c in _functionInput) 
                 {
                     if (Console.KeyAvailable) {hasToEnd = true; Console.ReadKey(true); break;}
-                    StringEater beep = new StringEater(c.ToString(), charDelay, true);
-                    
+                    StringEater beep = new StringEater(c.ToString(), charDelay, true);                    
                 };
             if (hasToEnd) {break;}
         }
         Console.ForegroundColor = ConsoleColor.White;
     }
-
     public string MenuVibrance(string chewedUpString, int charDelay, int curserPos, string menuOptions)
     {
         Console.CursorVisible = false;
@@ -116,13 +108,10 @@ public class StringEater
                     }
                 }
             }
-
             if (hasToEnd) break;
         }
         return keyPressed;
     }
-
-    
     public void StandardDisplay()
     {
         if (_hMove == true && _vMove != true) {
@@ -146,7 +135,6 @@ public class StringEater
                 if (_randoColorChar == true) 
                 {
                     Console.ForegroundColor = Randomizer.RandomConsoleColor();
-                    //Console.BackgroundColor = Randomizer.RandomConsoleColor();
                 }
                 Thread.Sleep(_digestiveDelay);
                 for (int i = 0; i < _hMoveUnits; i++) {Console.Write(" "); }

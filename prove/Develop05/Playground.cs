@@ -31,5 +31,4 @@ class Playground
         Console.CursorVisible = true;
         Console.ForegroundColor = ConsoleColor.White;
     }
-    
 }

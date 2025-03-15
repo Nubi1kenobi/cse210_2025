@@ -5,7 +5,6 @@ class Person
 {
     private string _lName = "";
     private string _fName = "";
-    
     private string _fileName = "";
     private int _score = 50;
     private string _mainMenuSelector = "";
@@ -13,7 +12,6 @@ class Person
     int _menuDelay = 10;
     List<SimpleGoal> thisPersonsGoals = new List<SimpleGoal>();
     List<SimpleGoal> thisPersonsCompletedGoals = new List<SimpleGoal>();
-
     public Person() 
     {
         bool looptyLoop = true;
@@ -58,14 +56,13 @@ class Person
         }
        do
        {
-            
             string mainMenuMessage = "Your Eternal Quest begins now!";
             Console.Clear();
             StringEater menuMessage = new StringEater($"{mainMenuMessage}\n", _menuDelay ,true);
             Menu mainMenu = new Menu(_score, "Add a New Goal","Record Event","Display Current Goals","Display Completed Goals");
             _mainMenuSelector = menuMessage.MenuVibrance(" <== Please Make a Selection ==> ", 10, 0, _mainMenuOptions); //(string, character delay, charactor position resets to...)
             MainMenuOptions(_mainMenuSelector, _menuDelay);
-                if (_mainMenuSelector == "0") {looptyLoop = false;}
+            if (_mainMenuSelector == "0") {looptyLoop = false;}
        } while (looptyLoop);
     }
     private void AddGoal() //Temporary Class
@@ -73,7 +70,6 @@ class Person
         NewSimpleGoal();
         NewEternalGoal();
         NewChecklistGoal();
-
     } 
      private void LoadMyFile() 
      {
@@ -132,7 +128,6 @@ class Person
         ChecklistGoal newGoal = new ChecklistGoal(segment[0],  segment[1], Convert.ToInt16(segment[2]), false, Convert.ToInt16(segment[2]), Convert.ToInt16(segment[3]));
         SaveMyFile(newGoal);
     }
-
     private void DisplayMyGoals()
     {
         Console.WriteLine("Here are your current goals:\n");
@@ -152,28 +147,21 @@ class Person
     private void MainMenuOptions(string parameterA, int menuDelay)
     {
         string _selector = parameterA;
-        bool looptyLoop = true;
-            
         switch (_selector)
         {
             case "1":
                 AddGoalsMenu(menuDelay);
                 return;
-
-
-            
             case "2":
                 Console.Clear();
                 StringEater num2 = new StringEater("You have selected OPTION 2", 20, true);
                 Utility.PressAnyKey();
                 return;
-            
             case "3":
                 Console.Clear();
                 StringEater num3 = new StringEater("You have selected OPTION 3", 20, true);
                 Utility.PressAnyKey();
                 return;                                
-            
             case "0":
                 Playground.Quit();
                 return;
@@ -181,13 +169,11 @@ class Person
                 return;
         }
     }
-
     private void AddGoalsMenu(int menuDelay)
     {
         string selector = "";
         bool looptyLoop = true;
         string addGoalMenuOptions = "1234" ;
-        
         do
        {
             Console.Clear();
@@ -199,8 +185,6 @@ class Person
             AddGoalsMenuOptions(selector, menuDelay);
             
        } while (looptyLoop);
-
-        
     }
     private void AddGoalsMenuOptions(string parameterA, int menuDelay)
     {
@@ -211,25 +195,19 @@ class Person
                 Console.Clear();
                 NewSimpleGoal();
                 return;
-
-
-            
             case "2":
                 Console.Clear();
                 NewEternalGoal();                
                 return;
-            
             case "3":
                 Console.Clear();
                 NewChecklistGoal();
                 return;    
-
             case "4":    
                 Console.Clear();
                 Console.WriteLine("Returning to Main Menu...");  // Optional: Debugging message
                 Thread.Sleep(1000);                           
             return;
-
             default:
                 return;
         }

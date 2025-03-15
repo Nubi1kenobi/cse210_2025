@@ -17,5 +17,4 @@ class Randomizer
         var consoleColors = Enum.GetValues(typeof(ConsoleColor));
         return (ConsoleColor)consoleColors.GetValue(randomColor.Next(consoleColors.Length));
     }
-    
 }
