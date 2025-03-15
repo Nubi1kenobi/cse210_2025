@@ -8,7 +8,6 @@ class Program
         Console.CursorVisible = false;
         Console.Clear();
         Console.WriteLine("Hello Develop05 World!");
-        Console.ReadKey();
         Person thisPerson = new Person();
 
         

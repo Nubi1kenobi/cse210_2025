@@ -1,3 +1,0 @@
-SimpleGoal-|-hey there buddy-|-100-|-False
-SimpleGoal-|-My secon goal-|-100-|-False
-SimpleGoal-|-finish him-|-100-|-False

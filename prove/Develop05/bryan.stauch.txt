@@ -1,36 +1,4 @@
-SimpleGoal-|-Goal0-|-5-|-False
-SimpleGoal-|-Goal1-|-15-|-False
-SimpleGoal-|-Goal2-|-25-|-False
-EternalGoal-|-Goal3-|-40-|-0
-EternalGoal-|-Goal4-|-50-|-0
-EternalGoal-|-Goal5-|-60-|-0
-ChecklistGoal-|-Goal6-|-40-|-3-|-3-|-True-|-100
-ChecklistGoal-|-Goal7-|-40-|-5-|-4-|-False-|-100
-ChecklistGoal-|-Goal8-|-40-|-7-|-6-|-False-|-100
-SimpleGoal-|-Goal0-|-5-|-False
-SimpleGoal-|-Goal1-|-15-|-False
-SimpleGoal-|-Goal2-|-25-|-False
-EternalGoal-|-Goal3-|-40-|-0
-EternalGoal-|-Goal4-|-50-|-0
-EternalGoal-|-Goal5-|-60-|-0
-ChecklistGoal-|-Goal6-|-40-|-3-|-3-|-True-|-100
-ChecklistGoal-|-Goal7-|-40-|-4-|-5-|-False-|-100
-ChecklistGoal-|-Goal8-|-40-|-6-|-7-|-False-|-100
-SimpleGoal-|-Goal0-|-5-|-False
-SimpleGoal-|-Goal1-|-15-|-False
-SimpleGoal-|-Goal2-|-25-|-False
-EternalGoal-|-Goal3-|-40-|-0
-EternalGoal-|-Goal4-|-50-|-0
-EternalGoal-|-Goal5-|-60-|-0
-ChecklistGoal-|-Goal6-|-40-|-3-|-3-|-True-|-100
-ChecklistGoal-|-Goal7-|-40-|-4-|-5-|-False-|-100
-ChecklistGoal-|-Goal8-|-40-|-6-|-7-|-False-|-100
-SimpleGoal-|-Goal0-|-5-|-False
-SimpleGoal-|-Goal1-|-15-|-False
-SimpleGoal-|-Goal2-|-25-|-False
-EternalGoal-|-Goal3-|-40-|-0
-EternalGoal-|-Goal4-|-50-|-0
-EternalGoal-|-Goal5-|-60-|-0
-ChecklistGoal-|-Goal6-|-40-|-3-|-3-|-True-|-100
-ChecklistGoal-|-Goal7-|-40-|-5-|-4-|-False-|-100
-ChecklistGoal-|-Goal8-|-40-|-7-|-6-|-False-|-100
+
+SimpleGoal-|-Complete my Week 10 Polymorphism Assignment-|-Finish Assignment-|-1000-|-False
+EternalGoal-|-Daily Prayer-|-Pray every morning, evening, and before each meal.-|-500-|-0
+ChecklistGoal-|-Complete the class, get the credit.-|-Finish the remaining 50 credits.-|-500-|-0-|-5000-|-False-|-500
