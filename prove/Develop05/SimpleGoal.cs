@@ -56,11 +56,11 @@ public class SimpleGoal
 
     public static string NewSimpleGoal() 
     {
-        Console.Write("What is your goal?\n ==> ");
+        StringEater simpleGoal0 = new StringEater("What is your new Simple Goal?\n ==> ", 10, true);
         string newGoalA = Console.ReadLine();
-        Console.Write("Describe your goal?\n ==> ");
+        StringEater simpleGoal1 = new StringEater("Describe your goal?\n ==> ", 10, true);
         string newGoalDesc = Console.ReadLine();
-        Console.Write("What is your goal's value? ");
+        StringEater simpleGoal2 = new StringEater("What is your goal's value? ", 10, true);
         int  newGoalValue = int.Parse(Console.ReadLine());
         
         return $"{newGoalA}-|-{newGoalDesc}-|-{newGoalValue}";

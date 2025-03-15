@@ -89,13 +89,13 @@ public class StringEater
         Console.ForegroundColor = ConsoleColor.White;
     }
 
-    public string MenuVibrance(string chewedUpString, int charDelay, int curserPos)
+    public string MenuVibrance(string chewedUpString, int charDelay, int curserPos, string menuOptions)
     {
         Console.CursorVisible = false;
         string functionInput = chewedUpString;
         bool hasToEnd = false;
         int lineBuffer = functionInput.Length;
-        string keyPressed = "5";
+        string keyPressed = "A";
         (int left, int top) = Console.GetCursorPosition();      
         while (!hasToEnd)
         {
@@ -109,7 +109,7 @@ public class StringEater
                 {
                     ConsoleKeyInfo key = Console.ReadKey(intercept: true); 
                     keyPressed = key.KeyChar.ToString();
-                    if ("0123".Contains(keyPressed)) //if any if the characters in the string are in keyPressed, will break the loop.
+                    if (menuOptions.Contains(keyPressed)) //if any if the characters in the string are in keyPressed, will break the loop.
                     {
                         hasToEnd = true;
                         break;

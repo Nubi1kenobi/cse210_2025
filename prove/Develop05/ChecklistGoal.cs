@@ -57,15 +57,15 @@ public class ChecklistGoal : SimpleGoal
     }
     public static string NewChecklistGoal() 
     {
-        Console.Write("What is your goal?\n ==> ");
+       StringEater checklistGoal0 = new StringEater("What is your new Checklist Goal?\n ==> ", 10, true);
         string newGoalA = Console.ReadLine();
-        Console.Write("Describe your goal?\n ==> ");
+        StringEater checklistGoal1 = new StringEater("Describe your goal?\n ==> ", 10, true);
         string newGoalDesc = Console.ReadLine();
-        Console.Write("What is your goal's value? ==> ");
+        StringEater checklistGoal2 = new StringEater("What is your goal's value? ==> ", 10, true);
         int  newGoalValue = int.Parse(Console.ReadLine());
-        Console.Write("How many times to complete this goal to get the bonus? ==> ");
+        StringEater checklistGoal3 = new StringEater("How many times to complete this goal to get the bonus? ==> ", 10, true);
         int  timesToComplete = int.Parse(Console.ReadLine());
-        Console.Write($"What is your goal's bonus value for completing the goal {timesToComplete} times? ");
+        StringEater checklistGoal4 = new StringEater($"What is your goal's bonus value for completing the goal {timesToComplete} times? ", 10, true);
         int  bonus = int.Parse(Console.ReadLine());
         return $"{newGoalA}-|-{newGoalDesc}-|-{newGoalValue}-|-{bonus}-|-{timesToComplete}";
     }

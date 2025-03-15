@@ -39,11 +39,11 @@ public class EternalGoal : SimpleGoal
     
     public static string NewEternalGoal() 
     {
-        Console.Write("What is your goal?\n ==> ");
+        StringEater eternalGoal0 = new StringEater("What is your new Eternal Goal?\n ==> ", 10, true);
         string newGoalA = Console.ReadLine();
-        Console.Write("Describe your goal?\n ==> ");
+        StringEater eternalGoal1 = new StringEater("Describe your goal?\n ==> ", 10, true);
         string newGoalDesc = Console.ReadLine();
-        Console.Write("What is your goal's value? ==> ");
+        StringEater eternalGoal2 = new StringEater("What is your goal's value? ==> ", 10, true);
         int  newGoalValue = int.Parse(Console.ReadLine());
         return $"{newGoalA}-|-{newGoalDesc}-|-{newGoalValue}";
     }
