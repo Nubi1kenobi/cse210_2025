@@ -1,5 +1,7 @@
 using System;
-
+//I got tired of trying to remember how to do the random stuff on the 
+//fly, this is what this class is for and for generating random
+//color types on an ENUM.
 class Randomizer 
 {
     static public int RandomInt(int parameter)

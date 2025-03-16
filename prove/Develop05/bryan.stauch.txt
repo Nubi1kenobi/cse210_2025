@@ -1,2 +1,11 @@
-
-ChecklistGoal-|-Feed Dogs-|-Feed the dogs every day.-|-50-|-0-|-250-|-False-|-50
+EternalGoal-|-Temple-|-Visit the temple.-|-1500-|-1-|-False
+EternalGoal-|-Be Kind-|-Be kind to everyone in my family intentionally, at least once a day.-|-1000-|-0-|-False
+ChecklistGoal-|-Daily Scripture Study-|-Designate a time, everyday to do my scripture study for 15 minutes. -|-100-|-0-|-7-|-False-|-1000
+SimpleGoal-|-Sleep-|-Get 8 hours of rest tonight.-|-100-|-False
+ChecklistGoal-|-Get Proper Rest-|-Get 8 hours of sleep every night for a week.-|-100-|-0-|-7-|-False-|-1000
+EternalGoal-|-Temple Recommend-|-Renew it before it expires.-|-500-|-1-|-False
+SimpleGoal-|-Go to Bed-|-Actually stop what I am doing right now and go to bed.-|-10000-|-True
+ChecklistGoal-|-Think-|-Thinnk about the choices I have made twice tonight.-|-250-|-2-|-2-|-True-|-500
+SimpleGoal-|-Play With Animals-|-Play with the dogs tonight before bedtime.-|-1000-|-True
+ChecklistGoal-|-Eat-|-Eat twice a day.-|-500-|-2-|-2-|-True-|-500
+SimpleGoal-|-Complete Project-|-Complete this polymorphism programming assignment.-|-5000-|-True

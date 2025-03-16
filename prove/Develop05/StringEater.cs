@@ -1,6 +1,9 @@
 using System;
 using System.Drawing;
 using System.Text;
+//this is probably my favorite creation this semester. 
+//It helps me with random colors for text charactors being displayed instead of using Console.Write()
+//This class has been further deveoloped at each project except for this project. 
 public class StringEater
 {
     private string _eatenString;
@@ -10,6 +13,7 @@ public class StringEater
     private bool _vMove = false;
     private int _hMoveUnits = 0;
     private int _vMoveUnits = 0;
+    //StringEater constructors...pretty self-explanitory.
     public StringEater(){} 
     public StringEater(string eatenString)
     {
@@ -31,6 +35,7 @@ public class StringEater
         _randoColorChar = randoColorChar;
         StandardDisplay();
     }  
+    //this one below does not work right, neeed to play around with it.
     public StringEater(string eatenString, int digestiveDelay, bool horizontalMovement,int horizontalMoveUnits, bool verticalMovement, int verticalMoveUnits, bool randoColorChar)
     {
         _eatenString = eatenString;
@@ -42,6 +47,7 @@ public class StringEater
         _randoColorChar = randoColorChar;
         StandardDisplay();
     }  
+    //Vibrance() and Vibrance2() - I am playing with a few things, have not decided which way to go yet.
     public void Vibrance(string chewedUpString, int charDelay, int curserPos)
     {
         Console.CursorVisible = false;
@@ -81,6 +87,8 @@ public class StringEater
         }
         Console.ForegroundColor = ConsoleColor.White;
     }
+    //MenuVibrance is awesome! it basically shows me how to do a loop with a string with multiple colors, 
+    //never stopping and it is an animation. This is my FAVORITE creation of this class. 
     public string MenuVibrance(string chewedUpString, int charDelay, int curserPos, string menuOptions)
     {
         Console.CursorVisible = false;
@@ -92,11 +100,9 @@ public class StringEater
         while (!hasToEnd)
         {
             Console.SetCursorPosition(left, top);
-
             foreach (char c in functionInput) 
             {
                 StringEater beep = new StringEater(c.ToString(), charDelay, true);
-
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey(intercept: true); 
@@ -112,6 +118,9 @@ public class StringEater
         }
         return keyPressed;
     }
+    //I need to further develop this method, it does what I need 99% of the time, but I want to break it 
+    //down and do some other stuff with it. I just have not had much time with it, I know I can do the same
+    //and more if I dragged my knucles through it again.
     public void StandardDisplay()
     {
         if (_hMove == true && _vMove != true) {

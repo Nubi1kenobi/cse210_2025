@@ -1,5 +1,8 @@
 using System;
 using System.Net.NetworkInformation;
+//This class was created for me to play around with things, and it stuck. 
+//I used it for doing weird things and having an intro and an exit. 
+//I didnt get around to a proper intro for this program, but the exit works.
 class Playground
 {   
     static public void Quit()
