@@ -13,12 +13,11 @@ public class EternalGoal : SimpleGoal
     public int GetTimesCompleted(){return _timesCompleted;}
     public override string Serialize() 
     {
-        return $"{GetGoalType()}-|-{GetGoal()}-|-{GetGoalDesc()}-|-{GetValue()}-|-{GetTimesCompleted()}";
-    }
+        return $"{GetGoalType()}-|-{GetGoal()}-|-{GetGoalDesc()}-|-{GetValue()}-|-{GetTimesCompleted()}-|-{GetComplete()}";}
     public override void Deserialize(string oneOfMyGoals)
     {
         string[] segment = oneOfMyGoals.Split("-|-");       
-        if (oneOfMyGoals.Length < 5)
+        if (oneOfMyGoals.Length < 6)
             {
                 Console.WriteLine("ERROR - Missing line segments, in EternalGoal.Deserialize.");
             }

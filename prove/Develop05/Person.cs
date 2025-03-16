@@ -89,19 +89,22 @@ class Person
             {
                 SimpleGoal deSerializedGoal = new SimpleGoal(); 
                 deSerializedGoal.Deserialize(fileLine);
-                thisPersonsGoals.Add(deSerializedGoal);
+                if (segment[4] == "false"){thisPersonsGoals.Add(deSerializedGoal);}
+                else {thisPersonsCompletedGoals.Add(deSerializedGoal);}
             }
             if (segment[0] == "EternalGoal")
             {
                 EternalGoal deSerializedGoal = new EternalGoal(); 
                 deSerializedGoal.Deserialize(fileLine);
-                thisPersonsGoals.Add(deSerializedGoal);
+                if (segment[5] == "false"){thisPersonsGoals.Add(deSerializedGoal);}
+                else {thisPersonsCompletedGoals.Add(deSerializedGoal);}
             }
             if (segment[0] == "ChecklistGoal")
             {
                 ChecklistGoal deSerializedGoal = new ChecklistGoal(); 
                 deSerializedGoal.Deserialize(fileLine);
-                thisPersonsGoals.Add(deSerializedGoal);
+                if (segment[6] == "false"){thisPersonsGoals.Add(deSerializedGoal);}
+                else {thisPersonsCompletedGoals.Add(deSerializedGoal);}
             }          
         }  
     }
@@ -130,18 +133,22 @@ class Person
     }
     private void DisplayMyGoals()
     {
-        Console.WriteLine("Here are your current goals:\n");
+        Console.Clear();
+        StringEater displayCCurrentGoals = new StringEater("Here are your current goals:\n", 10, true);
         foreach (SimpleGoal goal in thisPersonsGoals)
         {
             goal.DisplayGoal();
+            Utility.PressAnyKey();
         }
     }
     private void DisplayMyCompletedGoals()
     {
-        Console.WriteLine("Here are your completed goals:\n");
+        Console.Clear();
+        StringEater displayCompletedGoals = new StringEater("Here are your completed goals:\n", 10, true);
         foreach (SimpleGoal goal in thisPersonsCompletedGoals)
         {
             goal.DisplayGoal();
+            Utility.PressAnyKey();
         }
     }
     private void MainMenuOptions(string parameterA, int menuDelay)
@@ -154,13 +161,16 @@ class Person
                 return;
             case "2":
                 Console.Clear();
-                StringEater num2 = new StringEater("You have selected OPTION 2", 20, true);
+                StringEater num2 = new StringEater("Record an Event", 20, true);
                 Utility.PressAnyKey();
                 return;
             case "3":
                 Console.Clear();
-                StringEater num3 = new StringEater("You have selected OPTION 3", 20, true);
-                Utility.PressAnyKey();
+                DisplayMyGoals();
+                return;                                
+            case "4":
+                Console.Clear();
+                DisplayMyCompletedGoals();
                 return;                                
             case "0":
                 Playground.Quit();
@@ -205,8 +215,8 @@ class Person
                 return;    
             case "4":    
                 Console.Clear();
-                Console.WriteLine("Returning to Main Menu...");  // Optional: Debugging message
-                Thread.Sleep(1000);                           
+                StringEater addGoalsLeaving = new StringEater("Returning to Main Menu...", 10, true);  // Optional: Debugging message
+                Thread.Sleep(1500);                           
             return;
             default:
                 return;
