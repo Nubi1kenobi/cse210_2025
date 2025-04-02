@@ -1,5 +1,4 @@
 using System;
-
 class Address 
 {
     private string _streetAddress = "";

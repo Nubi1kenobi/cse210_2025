@@ -1,5 +1,4 @@
 using System;
-
 class Customer 
 {
     private string _customerName = "";

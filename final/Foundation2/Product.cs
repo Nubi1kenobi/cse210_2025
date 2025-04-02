@@ -1,5 +1,4 @@
 using System;
-
 class Product 
 {
     private string _name = "";

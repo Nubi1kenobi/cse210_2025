@@ -1,6 +1,5 @@
 using System;
 using System.Reflection;
-
 class Program
 {
     static void Main(string[] args)
@@ -58,11 +57,6 @@ class Program
         Console.Write($"Your Total Price is ${orderC.TotalCostOfOrder()}.\n\n");
         Console.Write("<Press Any Key>");
         Console.ReadKey();
-        Console.Clear();
-        
-
-
-
-
+        Console.Clear();       
     }
 }

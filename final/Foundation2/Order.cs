@@ -1,6 +1,5 @@
 using System;
 using System.Numerics;
-
 class Order 
 {
     private Customer _customer;
@@ -18,7 +17,6 @@ class Order
         {
             totalCost = totalCost + 35;
         }
-
         foreach(Product lineItemInOrder in _productList)
         {
             totalCost = totalCost + lineItemInOrder.GetProductTotalCost();
@@ -33,7 +31,8 @@ class Order
     public string GetCustomer()
     {
         return _customer.GetCustomerName();
-    }    public void SetProductList(Product itemAdding, int quantity)
+    }    
+    public void SetProductList(Product itemAdding, int quantity)
     {
         itemAdding.SetQuantity(quantity);
         _productList.Add(itemAdding);
