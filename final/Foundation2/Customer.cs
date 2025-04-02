@@ -2,21 +2,29 @@ using System;
 
 class Customer 
 {
-    private string _name = "";
-    private string _customerAddress = "";
+    private string _customerName = "";
+    private Address _customerAddress;
     private bool _localUS_Address = false;
+    private string _country = "";
+   public Customer(string customerName)
+    {
+        _customerName = customerName;
+    }
     public string GetCustomerName()
     {
-        return _name;
+        return _customerName;
     }
     public string GetCustomerAddress()
     {
-        Address
-        return _customerAddress;
+        return _customerAddress.GetAddress();
     }
-    public bool localUS_Address()
+    public void SetAddress(string streeAddress, string city, string state_Province, string zipCode, string country){
+        _customerAddress = new Address(streeAddress, city, state_Province, zipCode, country);
+        _country = country;
+    }
+    public bool IsLocalUSAddress()
     {
-        return _localUS_Address;
+        if (_country == "USA"){return true;}
+        else return false;
     }
-
 }

@@ -6,7 +6,7 @@ class Product
     private string _productID = "";
     private double _pricePerUnit = 0;
     private int _quantity = 0;
-    Product(string productName, string productID, double pricePerUnit)
+    public Product(string productName, string productID, double pricePerUnit)
     {
         _name = productName;
         _productID = productID;

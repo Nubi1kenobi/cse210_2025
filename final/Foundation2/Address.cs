@@ -7,7 +7,7 @@ class Address
     private string _stateProvince = "";
     private string _zipCode = "";
     private string _country = "";
-    Address(string streeAddress, string city, string state_Province, string zipCode, string country)
+    public Address(string streeAddress, string city, string state_Province, string zipCode, string country)
     {
         _streetAddress = streeAddress;
         _city = city;
