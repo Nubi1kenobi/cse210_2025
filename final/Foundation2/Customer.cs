@@ -5,9 +5,9 @@ class Customer
     private Address _customerAddress;
     private bool _localUS_Address = false;
     private string _country = "";
-   public Customer(string customerName)
+    public Customer(string customerName)
     {
-        _customerName = customerName;
+        SetCustomerName(customerName);
     }
     public string GetCustomerName()
     {
@@ -17,7 +17,12 @@ class Customer
     {
         return _customerAddress.GetAddress();
     }
-    public void SetAddress(string streeAddress, string city, string state_Province, string zipCode, string country){
+    public void SetCustomerName(string name)
+    {
+        _customerName = name;
+    }
+    public void SetAddress(string streeAddress, string city, string state_Province, string zipCode, string country)
+    {
         _customerAddress = new Address(streeAddress, city, state_Province, zipCode, country);
         _country = country;
     }

@@ -6,7 +6,7 @@ class Order
     private List<Product> _productList = new List<Product>();
     private double shippingCostOutsideUSA = 35;
     private double shippingCostInsideUSA = 5;
-    public double TotalCostOfOrder()
+    public double GetTotalCost()
     {
         double totalCost = 0;
         if (_customer.IsLocalUSAddress())
