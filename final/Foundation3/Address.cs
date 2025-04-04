@@ -1,11 +1,12 @@
 using System;
 class Address 
 {
-    private string _streetAddress = "";
-    private string _city = "";
-    private string _stateProvince = "";
-    private string _zipCode = "";
-    private string _country = "";
+    private string _streetAddress = "Street Address";
+    private string _city = "City";
+    private string _stateProvince = "State";
+    private string _zipCode = "Zip";
+    private string _country = "USA";
+    public Address() {}
     public Address(string streetAddress, string city, string state_Province, string zipCode, string country)
     {
         SetAddress(streetAddress, city, state_Province, zipCode, country);

@@ -16,6 +16,6 @@ public class Lecture : Event
     }
     public string SetDetailsString(string details, int capacity)
     {
-        return $"{details}\nThe capacity of the eventr is {capacity}.";
+        return $"\nPresenting guest speaker(s) {details}, with the capacity of the event being {capacity} people.";
     }
 }
