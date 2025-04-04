@@ -56,6 +56,7 @@ class Program
         {
             Console.Write($"{video.GetVideoName()}, by {video.GetAuthor()}, is {video.GetLength()} seconds long, and has {video.NumberOfComments()} comments.\n");
             video.DisplayListOfComments();
+            Console.Write("\n");
 
         }  
     }

@@ -1,5 +1,4 @@
 using System;
-
 class Comment
 {
     private string _name = "";
@@ -12,7 +11,5 @@ class Comment
     public void Display()
     {
         Console.WriteLine($"{_name} - {_comment}");
-    }
-
-    
+    }  
 }
