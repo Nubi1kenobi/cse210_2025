@@ -2,25 +2,52 @@ using System;
 public class Activity
 {
     private string _date = "01/01/1900";
-    private int _lengthInMinutes = 1;
-    private int _distance = 1;
-    public Activity(string date, int length, int distance)
+    private string _activity = "default";
+    private int _lengthInMinutes = 0;
+    public Activity(string date, int length, string activity)
+    {
+        SetDate(date);
+        SetLength(length);
+        SetActivity(activity);
+    }
+    public void SetDate(string date)
     {
         _date = date;
+    }
+    public void SetLength(int length)
+    {
         _lengthInMinutes = length;
-        _distance = distance;
     }
-    public double CalculateDistance()
+    public void SetActivity(string activity)
     {
-        return 0;
+        _activity = activity;
     }
-    public double CalculateSpeed()
+    public string GetDate()
     {
-        return 0;
+        return _date;
     }
-    public double CalculatePace()
+    public int GetLength()
     {
-        return 0;
+        return _lengthInMinutes;
     }
-
+    public string GetActivity()
+    {
+        return _activity;
+    }
+    public virtual double GetCalculatedDistance() // distance = speed (mph)  x (time in minutes) / 60
+    {
+        return GetCalculatedSpeed() * GetLength() / 60;
+    }
+    public virtual double GetCalculatedSpeed() //miles per hour = distance / time * 60
+    {
+        return GetCalculatedDistance() / GetLength() * 60;
+    }
+    public virtual double GetCalculatedPace() //pace =  minutes per mile = time / distance
+    {
+        return GetLength() / GetCalculatedDistance();
+    }
+    public string Summary() 
+    {
+        return $"{GetDate()} {GetActivity()} ({GetLength()} min) - Distance {Math.Round(GetCalculatedDistance(),2)} miles, Speed {Math.Round(GetCalculatedSpeed(),2)} mph, Pace {Math.Round(GetCalculatedPace(),2)} min per mile.";
+    }
 }
