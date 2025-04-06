@@ -36,14 +36,12 @@ class Order
     {
         itemAdding.SetQuantity(quantity);
         _productList.Add(itemAdding);
-
     }
     public string  GetPackingLabel()
     {   
         string result = "";
         foreach(Product lineItem in _productList)
-        {
-            
+        {          
             result = result + $"Product Name: {lineItem.GetName()} - Product ID: {lineItem.GetID()} Qty: {lineItem.GetQuantity()}\n";
         }
         return result;

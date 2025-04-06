@@ -1,5 +1,4 @@
 using System;
-
 class Program
 {
     static void Main(string[] args)
@@ -20,7 +19,6 @@ class Program
         Console.Write($"{newLecture.GetShortDesc()}");
         Console.Write($"\n\n<Press Any Key>");
         Console.ReadKey();
-
         Console.Clear();
         Console.Write($"Standard Description:\n");
         Console.Write($"{newReception.GetStandardDetails()}");
@@ -31,7 +29,6 @@ class Program
         Console.Write($"Short Description:\n");
         Console.Write($"{newReception.GetShortDesc()}");
         Console.Write($"\n\n<Press Any Key>");
-
         Console.ReadKey();Console.Clear();
         Console.Write($"Standard Description:\n");
         Console.Write($"{newGathering.GetStandardDetails()}");

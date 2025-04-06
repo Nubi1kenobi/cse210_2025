@@ -1,5 +1,4 @@
 using System;
-
 class Video
 {
     private string _title = "";

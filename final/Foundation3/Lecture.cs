@@ -2,7 +2,6 @@ using System;
 public class Lecture : Event 
 {
     private int _capacity = 0;
-
     public Lecture(string eventTitle, string  eventDesc, string  eventDate, string eventTime, string streetAddress, string city, string state_Province, string zipCode, string country, string details, int capacity) : base(eventTitle, eventDesc, eventDate, eventTime,streetAddress, city, state_Province, zipCode, country)
     {
         SetEventType("Lecture");

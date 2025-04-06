@@ -1,16 +1,13 @@
 using System;
 using System.Text.RegularExpressions;
-
 class Program
 {
     static void Main(string[] args)
     {
         Console.Clear();
         Console.WriteLine("Hello Foundation1 World!");
-
         //create video list
         List<Video> videoCollection = new List<Video>();
-
         //creating the videos and adding them to the video collection list
         Video video1 = new Video("title1", "author1", 10);
         videoCollection.Add(video1);
@@ -20,7 +17,6 @@ class Program
         videoCollection.Add(video3);
         Video video4 = new Video("title4", "author4", 40);
         videoCollection.Add(video4);
-
         //creating the comments for each video and adding them to the appropriate list
         Comment comment1_1 = new Comment("commentator1_1", "This is great stuff!");
         video1._comments.Add(comment1_1);
@@ -50,14 +46,12 @@ class Program
         video4._comments.Add(comment4_3);
         Comment comment4_4 = new Comment("commentator3_4", "Who would have thought?!?!?!?");
         video4._comments.Add(comment4_4);
-
         //iterates through videoCollection, displays the video info and all of its comments.
         foreach (Video video in videoCollection)
         {
             Console.Write($"{video.GetVideoName()}, by {video.GetAuthor()}, is {video.GetLength()} seconds long, and has {video.NumberOfComments()} comments.\n");
             video.DisplayListOfComments();
             Console.Write("\n");
-
         }  
     }
 }

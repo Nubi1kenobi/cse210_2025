@@ -13,7 +13,6 @@ public class Event
         SetEvent(eventTitle, eventDesc, eventDate, eventTime);
         _eventAddress.SetAddress(streetAddress, city, state_Province, zipCode, country);        
     }
-
     public void SetEventType(string eventType)
     {
         _eventType = eventType;
@@ -40,6 +39,5 @@ public class Event
     public string GetShortDesc()
     {
         return $"{_eventType} - {_title} - {_date}";
-    }
-    
+    }   
 } 
