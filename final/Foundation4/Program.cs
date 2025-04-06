@@ -1,5 +1,4 @@
 using System;
-
 class Program
 {
     static void Main(string[] args)
@@ -18,6 +17,5 @@ class Program
         {
             Console.Write($"{myActivity.Summary()}\n");
         }
-
     }
 }

@@ -2,7 +2,6 @@ using System;
 public class Swimming : Activity
 {
     private int _laps = 0;
-    
     public Swimming(string date, int length, string activity, int laps) : base(date, length, activity) 
     {
         SetLaps(laps);
